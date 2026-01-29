@@ -1,13 +1,13 @@
 import express from 'express'
 import cors from 'cors'
-// import { notesRoutes } from './cars/cars.route.js'
+import { carsRoutes } from './cars/cars.routes.js'
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
 
-// app.use('/notes', notesRoutes)
+app.use('/cars', carsRoutes)
 
 app.get('/', (_req, res) => {
     res.send('Hello World!')

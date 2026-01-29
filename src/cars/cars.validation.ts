@@ -1,27 +1,27 @@
 import { z } from 'zod'
 
 export const createCarSchema = z.object({
-    name: z.string().min(2, 'Car name must be at least 2 characters'),
+    name: z.string().min(2),
 
-    description: z.string().min(10, 'Description must be at least 10 characters'),
+    description: z.string().min(10),
 
-    dailyRentalPrice: z.coerce.number().positive('Daily rental price must be greater than 0'),
+    dailyRentalPrice: z.coerce.number().positive(),
 
     availability: z.boolean(),
 
-    registrationNumber: z.string().min(3, 'Registration number must be at last 3 characters'),
+    registrationNumber: z.string().min(3),
 
-    features: z.array(z.string().min(1)).min(1, 'At least one feature is required'),
+    features: z.array(z.string().min(1)).min(1),
 
-    imageUrl: z.string().url('Invalid image URL'),
+    imageUrl: z.url(),
 
-    location: z.string().min(2, 'Location is required'),
+    location: z.string().min(2),
 
-    ownerEmail: z.string().email('Invalid email address'),
+    ownerEmail: z.email(),
 
     bookingCount: z.number().int().nonnegative().optional(),
     bookingStatus: z.boolean().optional(),
     createdAt: z.date().optional(),
 })
 
-export const updateCarSchema = createCarSchema.optional()
+export const updateCarSchema = createCarSchema.partial();
