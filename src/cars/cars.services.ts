@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { client } from "../config/db.js";
 import { CreateCarInput } from "./cars.types.js";
 
@@ -11,5 +12,9 @@ export const carsService = {
 
     findAll() {
         return carsCollection.find().toArray()
+    },
+
+    findOne(id: string) {
+        return carsCollection.findOne({ _id: new ObjectId(id) })
     }
 }
