@@ -7,5 +7,9 @@ export const carsService = {
     create(car: CreateCarInput) {
         const fullInput = { ...car, bookingCount: 0, bookingStatus: false, createdAt: new Date() }
         return carsCollection.insertOne(fullInput)
+    },
+
+    findAll() {
+        return carsCollection.find().toArray()
     }
 }

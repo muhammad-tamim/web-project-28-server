@@ -14,3 +14,17 @@ export const createCar = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const getCars = async (req: Request, res: Response) => {
+    try {
+        const result = await carsService.findAll()
+        res.status(200).send({
+            success: true,
+            message: "Car retrieved successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
