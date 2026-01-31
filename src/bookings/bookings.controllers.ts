@@ -42,3 +42,17 @@ export const updateBooking = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const deleteBooking = async (req: Request, res: Response) => {
+    try {
+        const result = await bookingsService.delete(req.params.id as string)
+        res.status(200).send({
+            success: true,
+            message: "Booking deleted successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}

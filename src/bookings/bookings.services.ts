@@ -81,4 +81,8 @@ export const bookingsService = {
         }
         return bookingsCollection.updateOne(filter, updatedDoc)
     },
+
+    delete(id: string) {
+        return bookingsCollection.deleteOne({ _id: new ObjectId(id) })
+    },
 };
