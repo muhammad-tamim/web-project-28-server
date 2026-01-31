@@ -36,6 +36,35 @@ src/
     └── 
 ```
 ## What I Learn:
+- How to make authorize email middleware that checks all kind of request email:
+
+```ts
+import { Response, NextFunction } from 'express'
+import { AuthRequest } from './verifyToken.js'
+
+export const authorizeEmail = (req: AuthRequest, res: Response, next: NextFunction) => {
+    const emailFromToken = req.decoded?.email
+
+    const emailFromRequest = req.params.email || req.query.email || req.body.email
+
+    if (!emailFromToken || emailFromToken !== emailFromRequest) {
+        return res.status(403).json({ message: 'Forbidden access' })
+    }
+
+    next()
+}
+```
+
+it works for:
+
+GET /cars/email/:email → req.params.email
+
+GET /cars?email=... → req.query.email
+
+POST /cars → req.body.email
+
+Key takeaway: Using a single consistent field (em
+
 ## Challenges I Faced:
 ## API Documentation:
 ## Environment Variables
