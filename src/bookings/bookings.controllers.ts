@@ -14,3 +14,17 @@ export const createBooking = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const updateBooking = async (req: Request, res: Response) => {
+    try {
+        const result = await bookingsService.update(req.params.id as string, req.body)
+        res.status(200).send({
+            success: true,
+            message: "Booking updated successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}

@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 import { carsCollection } from "../cars/cars.services.js";
 import { client } from "../config/db.js";
-import { CreateBookingInput } from "./bookings.types.js";
+import { CreateBookingInput, UpdateBookingInput } from "./bookings.types.js";
 
 const bookingsCollection = client.db("web-project-28-DB").collection<CreateBookingInput & { totalCost: number }>("bookings");
 
@@ -48,4 +48,8 @@ export const bookingsService = {
         // Insert booking
         return bookingsCollection.insertOne({ ...booking, totalCost });
     },
+
+    update(id: string, data: UpdateBookingInput) {
+        return bookingsCollection.updateOne({ _id: new ObjectId(id) }, { $set: data as any })
+    }
 };
