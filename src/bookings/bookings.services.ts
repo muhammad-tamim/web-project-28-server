@@ -47,8 +47,8 @@ export const bookingsService = {
         return bookingsCollection.insertOne({ ...booking, totalCost });
     },
 
-    findAll(userEmail: string) {
-        return bookingsCollection.find({ userEmail }).toArray()
+    findAll(email: string) {
+        return bookingsCollection.find({ email }).toArray()
     },
 
     async update(id: string, data: UpdateBookingInput) {

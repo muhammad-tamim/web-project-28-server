@@ -6,7 +6,7 @@ import { createBooking, deleteBooking, getBookings, updateBooking } from "./book
 const router = Router()
 
 router.post('/', validate(createBookingSchema), createBooking)
-router.get('/:userEmail', getBookings)
+router.get('/:email', getBookings)
 router.patch('/:id', validate(updateBookingSchema), updateBooking)
 router.delete('/:id', deleteBooking)
 

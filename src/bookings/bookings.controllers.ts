@@ -17,7 +17,7 @@ export const createBooking = async (req: Request, res: Response) => {
 
 export const getBookings = async (req: Request, res: Response) => {
     try {
-        const result = await bookingsService.findAll(req.params.userEmail as string)
+        const result = await bookingsService.findAll(req.params.email as string)
         res.status(200).send({
             success: true,
             message: "Bookings retrieved successfully",
