@@ -19,9 +19,7 @@ export const bookingsService = {
         }
 
         // days
-        const days = Math.ceil(
-            (booking.endDate.getTime() - booking.startDate.getTime()) / (1000 * 60 * 60 * 24)
-        );
+        const days = Math.ceil((booking.endDate.getTime() - booking.startDate.getTime()) / (1000 * 60 * 60 * 24));
 
         if (days <= 0) {
             throw new Error("Invalid booking duration");
@@ -53,7 +51,34 @@ export const bookingsService = {
         return bookingsCollection.find({ userEmail }).toArray()
     },
 
-    update(id: string, data: UpdateBookingInput) {
-        return bookingsCollection.updateOne({ _id: new ObjectId(id) }, { $set: data as any })
+    async update(id: string, data: UpdateBookingInput) {
+        const booking = await bookingsCollection.findOne({ _id: new ObjectId(id) });
+
+        if (!booking) {
+            throw new Error("Booking not found");
+        }
+
+        const newStart = data.startDate ?? booking.startDate;
+        const newEnd = data.endDate ?? booking.endDate;
+
+
+        if (newEnd.getTime() <= newStart.getTime()) {
+            throw new Error("Invalid booking duration");
+        }
+
+        const newDays = Math.ceil((newEnd.getTime() - newStart.getTime()) / (1000 * 60 * 60 * 24));
+        const previousDays = (booking.endDate.getTime() - booking.startDate.getTime()) / (1000 * 60 * 60 * 24)
+        const previousTotalCost = booking.totalCost
+        const NewTotalCost = newDays * previousTotalCost / previousDays
+
+        const filter = { _id: new ObjectId(id) }
+        const updatedDoc = {
+            $set: {
+                startDate: newStart,
+                endDate: newEnd,
+                totalCost: NewTotalCost
+            }
+        }
+        return bookingsCollection.updateOne(filter, updatedDoc)
     },
 };
