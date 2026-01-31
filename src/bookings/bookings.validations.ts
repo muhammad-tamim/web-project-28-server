@@ -6,3 +6,8 @@ export const createBookingSchema = z.object({
     startDate: z.coerce.date(),
     endDate: z.coerce.date(),
 })
+
+export const updateBookingSchema = createBookingSchema.omit({
+    carId: true,
+    userEmail: true
+}).partial()
