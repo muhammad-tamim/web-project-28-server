@@ -3,9 +3,10 @@ import { AuthRequest } from './verifyToken.js'
 
 export const authorizeEmail = (req: AuthRequest, res: Response, next: NextFunction) => {
     const emailFromToken = req.decoded?.email
-    const emailFromParams = req.params.email
 
-    if (!emailFromToken || emailFromToken !== emailFromParams) {
+    const emailFromRequest = req.params.email || req.query.email || req.body.email
+
+    if (!emailFromToken || emailFromToken !== emailFromRequest) {
         return res.status(403).json({ message: 'Forbidden access' })
     }
 
