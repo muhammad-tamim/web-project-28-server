@@ -49,7 +49,11 @@ export const bookingsService = {
         return bookingsCollection.insertOne({ ...booking, totalCost });
     },
 
+    findAll(userEmail: string) {
+        return bookingsCollection.find({ userEmail }).toArray()
+    },
+
     update(id: string, data: UpdateBookingInput) {
         return bookingsCollection.updateOne({ _id: new ObjectId(id) }, { $set: data as any })
-    }
+    },
 };
