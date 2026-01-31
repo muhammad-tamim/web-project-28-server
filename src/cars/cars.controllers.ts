@@ -4,9 +4,13 @@ import { carsService } from "./cars.services.js";
 export const createCar = async (req: Request, res: Response) => {
     try {
         const result = await carsService.create(req.body)
-        res.status(201).send(result)
+        res.status(201).send({
+            success: true,
+            message: "Car created successfully",
+            result
+        })
     }
-    catch (err) {
-        res.status(500).send({ message: "Failed to create car" })
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
     }
 }
