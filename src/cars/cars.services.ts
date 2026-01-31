@@ -14,6 +14,10 @@ export const carsService = {
         return carsCollection.find().toArray()
     },
 
+    findOwnerAll(ownerEmail: string) {
+        return carsCollection.find({ ownerEmail }).toArray()
+    },
+
     findOne(id: string) {
         return carsCollection.findOne({ _id: new ObjectId(id) })
     },
