@@ -42,3 +42,17 @@ export const getCar = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const updateCar = async (req: Request, res: Response) => {
+    try {
+        const result = await carsService.update(req.params.id as string, req.body)
+        res.status(200).send({
+            success: true,
+            message: "Car update successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}

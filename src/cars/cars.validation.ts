@@ -15,4 +15,7 @@ export const createCarSchema = z.object({
     createdAt: z.date().optional(),
 })
 
-export const updateCarSchema = createCarSchema.partial();
+export const updateCarSchema = createCarSchema.omit({
+    bookingCount: true,
+    createdAt: true,
+}).partial();
