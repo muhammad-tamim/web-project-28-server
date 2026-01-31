@@ -56,3 +56,17 @@ export const updateCar = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const deleteCar = async (req: Request, res: Response) => {
+    try {
+        const result = await carsService.delete(req.params.id as string)
+        res.status(200).send({
+            success: true,
+            message: "Car delete successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}

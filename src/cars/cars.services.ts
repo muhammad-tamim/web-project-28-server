@@ -20,5 +20,9 @@ export const carsService = {
 
     update(id: string, data: UpdateCarInput) {
         return carsCollection.updateOne({ _id: new ObjectId(id) }, { $set: data as any })
+    },
+
+    delete(id: string) {
+        return carsCollection.deleteOne({ _id: new ObjectId(id) })
     }
 }
