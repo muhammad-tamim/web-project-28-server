@@ -29,19 +29,6 @@ export const getCars = async (req: Request, res: Response) => {
     }
 }
 
-export const getOwnerCars = async (req: Request, res: Response) => {
-    try {
-        const result = await carsService.findOwnerAll(req.params.ownerEmail as string)
-        res.status(200).send({
-            success: true,
-            message: "Cars retrieved successfully",
-            result
-        })
-    }
-    catch (err: any) {
-        res.status(500).send({ message: err.message })
-    }
-}
 
 export const getCar = async (req: Request, res: Response) => {
     try {
@@ -77,6 +64,36 @@ export const deleteCar = async (req: Request, res: Response) => {
         res.status(200).send({
             success: true,
             message: "Car delete successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
+
+export const getBrands = async (req: Request, res: Response) => {
+    try {
+        const result = await carsService.findBrandAll()
+        res.status(200).send({
+            success: true,
+            message: "Brands retrieved successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
+
+export const getOwnerCars = async (req: Request, res: Response) => {
+    try {
+        const result = await carsService.findOwnerAll(req.params.email as string)
+        res.status(200).send({
+            success: true,
+            message: "Cars retrieved successfully",
             result
         })
     }

@@ -14,10 +14,6 @@ export const carsService = {
         return carsCollection.find().toArray()
     },
 
-    findOwnerAll(ownerEmail: string) {
-        return carsCollection.find({ ownerEmail }).toArray()
-    },
-
     findOne(id: string) {
         return carsCollection.findOne({ _id: new ObjectId(id) })
     },
@@ -28,5 +24,15 @@ export const carsService = {
 
     delete(id: string) {
         return carsCollection.deleteOne({ _id: new ObjectId(id) })
-    }
+    },
+
+
+    findBrandAll() {
+        return carsCollection.distinct('brand')
+    },
+
+
+    findOwnerAll(email: string) {
+        return carsCollection.find({ ownerEmail: email }).toArray()
+    },
 }

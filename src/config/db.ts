@@ -7,7 +7,7 @@ dotenv.config()
 export const client = new MongoClient(env.MONGODB_URI, {
     serverApi: {
         version: ServerApiVersion.v1,
-        strict: true,
+        // strict: true,
         deprecationErrors: true
     }
 })
