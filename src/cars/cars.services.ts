@@ -35,4 +35,18 @@ export const carsService = {
     findOwnerAll(email: string) {
         return carsCollection.find({ ownerEmail: email }).toArray()
     },
+
+
+    findSearch(brand: string, sort: 'asc' | 'desc') {
+
+        const filter: any = {}
+        if (brand) filter.brand = brand
+
+        const sortOption: any = {}
+        if (sort === 'asc') sortOption.dailyRentalPrice = 1
+        else if (sort === 'desc') sortOption.dailyRentalPrice = -1
+
+        return carsCollection.find(filter).sort(sortOption).toArray()
+    }
+
 }

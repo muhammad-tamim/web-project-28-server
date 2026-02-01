@@ -101,3 +101,18 @@ export const getOwnerCars = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const getSearch = async (req: Request, res: Response) => {
+    try {
+        const { brand, sort } = req.query
+        const result = await carsService.findSearch(brand as string, sort as 'asc' | 'desc')
+        res.status(200).send({
+            success: true,
+            message: "Cars retrieved successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
