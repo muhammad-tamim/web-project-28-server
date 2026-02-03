@@ -1,10 +1,13 @@
 import { z } from 'zod'
+import { CarBrands, CarTypes } from './cars.constants.js'
+
 
 export const createCarSchema = z.object({
     name: z.string().min(2),
-    brand: z.string().min(2).transform((val) => val.toLowerCase()),
     model: z.string().min(2),
     year: z.number().int().min(2000).max(new Date().getFullYear()),
+    brand: z.enum(CarBrands),
+    type: z.enum(CarTypes),
     description: z.string().min(10),
     dailyRentalPrice: z.coerce.number().positive(),
     availability: z.boolean(),
