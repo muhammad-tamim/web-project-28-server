@@ -1,13 +1,13 @@
 import { z } from 'zod'
-import { CarBrands, CarTypes } from './cars.constants.js'
+import { ObjectId } from 'mongodb'
 
 
 export const createCarSchema = z.object({
     name: z.string().min(2),
     model: z.string().min(2),
     year: z.number().int().min(2000).max(new Date().getFullYear()),
-    brand: z.enum(CarBrands),
-    type: z.enum(CarTypes),
+    brand: z.string().refine(val => ObjectId.isValid(val)),
+    type: z.string().refine(val => ObjectId.isValid(val)),
     description: z.string().min(10),
     dailyRentalPrice: z.coerce.number().positive(),
     availability: z.boolean(),

@@ -26,16 +26,9 @@ export const carsService = {
         return carsCollection.deleteOne({ _id: new ObjectId(id) })
     },
 
-
-    findBrandAll() {
-        return carsCollection.distinct('brand')
-    },
-
-
     findOwnerAll(email: string) {
         return carsCollection.find({ ownerEmail: email }).toArray()
     },
-
 
     findSearch(brand: string, sort: 'asc' | 'desc') {
 

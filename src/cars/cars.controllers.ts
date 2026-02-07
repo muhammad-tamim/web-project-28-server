@@ -72,22 +72,6 @@ export const deleteCar = async (req: Request, res: Response) => {
     }
 }
 
-
-export const getBrands = async (req: Request, res: Response) => {
-    try {
-        const result = await carsService.findBrandAll()
-        res.status(200).send({
-            success: true,
-            message: "Brands retrieved successfully",
-            result
-        })
-    }
-    catch (err: any) {
-        res.status(500).send({ message: err.message })
-    }
-}
-
-
 export const getOwnerCars = async (req: Request, res: Response) => {
     try {
         const result = await carsService.findOwnerAll(req.params.email as string)
