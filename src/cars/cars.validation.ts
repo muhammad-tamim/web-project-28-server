@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { ObjectId } from 'mongodb'
 
 
 export const createCarSchema = z.object({
@@ -14,7 +13,7 @@ export const createCarSchema = z.object({
     registrationNumber: z.string().min(3),
     features: z.array(z.string().min(1)).min(1),
     imageUrl: z.url(),
-    ownerEmail: z.email(),
+    email: z.email(),
 })
 
-export const updateCarSchema = createCarSchema.omit({ ownerEmail: true }).partial()
+export const updateCarSchema = createCarSchema.omit({ email: true }).partial()

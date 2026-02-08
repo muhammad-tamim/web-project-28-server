@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createCar, deleteCar, getCar, getCars, getOwnerCars, getSearch, updateCar } from "./cars.controllers.js";
+import { createCar, deleteCar, getCar, getCars, getCarsByEmail, getSearch, updateCar } from "./cars.controllers.js";
 import { validate } from "../middlewares/validate.js";
 import { createCarSchema, updateCarSchema } from "./cars.validation.js";
 
@@ -9,7 +9,7 @@ router.post('/', validate(createCarSchema), createCar)
 router.get('/', getCars)
 
 router.get('/search', getSearch)
-router.get('/owner/:email', getOwnerCars)
+router.get('/owner/:email', getCarsByEmail)
 
 router.get('/:id', getCar)
 router.patch('/:id', validate(updateCarSchema), updateCar)

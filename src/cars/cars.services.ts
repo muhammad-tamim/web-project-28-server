@@ -26,7 +26,7 @@ export const carsService = {
         return carsCollection.deleteOne({ _id: new ObjectId(id) })
     },
 
-    findOwnerAll(email: string) {
+    findAllByEmail(email: string) {
         return carsCollection.find({ ownerEmail: email }).toArray()
     },
 
