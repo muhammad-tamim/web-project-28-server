@@ -3,7 +3,7 @@ import cors from 'cors'
 import { carsRoutes } from './cars/cars.routes.js'
 import { bookingsRoutes } from './bookings/bookings.routes.js'
 import { brandsRoutes } from './carBrands/brands.routes.js'
-import { typesRoutes } from './carTypes/types.routes.js'
+import { categoriesRoutes } from './carCategories/categories.routes.js'
 
 const app = express()
 
@@ -12,7 +12,7 @@ app.use(express.json())
 
 app.use('/cars', carsRoutes)
 app.use('/brands', brandsRoutes)
-app.use('/types', typesRoutes)
+app.use('/categories', categoriesRoutes)
 app.use('/bookings', bookingsRoutes)
 
 app.get('/', (_req, res) => {
