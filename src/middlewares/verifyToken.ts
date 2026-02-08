@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
-import admin from '../cars/cars.firebase.js'
+import admin from '../lib/firebase.js'
 
-export interface AuthRequest extends Request {
+interface AuthRequest extends Request {
     decoded?: admin.auth.DecodedIdToken
 }
 
