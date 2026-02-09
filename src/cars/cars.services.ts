@@ -15,8 +15,17 @@ export const carsService = {
         return carsCollection.find().sort({ createdAt: -1 }).skip(skip).limit(limit).toArray()
     },
 
+    findAllByBrand(brand: string, page = 1, limit = 9) {
+        const skip = (page - 1) * limit
+        return carsCollection.find({ brand: new RegExp(`^${brand}$`, 'i') }).sort({ createdAt: -1 }).skip(skip).limit(limit).toArray()
+    },
+
     countAll() {
         return carsCollection.countDocuments()
+    },
+
+    countByBrand(brand: string) {
+        return carsCollection.countDocuments({ brand: new RegExp(`^${brand}$`, 'i') })
     },
 
     findRecent() {

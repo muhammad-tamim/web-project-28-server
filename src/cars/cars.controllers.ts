@@ -37,6 +37,30 @@ export const getCars = async (req: Request, res: Response) => {
     }
 }
 
+export const getCarsByBrand = async (req: Request, res: Response) => {
+    const brand = req.params.brand
+    const page = Number(req.query.page)
+    const limit = Number(req.query.limit)
+    try {
+        const cars = await carsService.findAllByBrand(brand as string, page, limit)
+        const total = await carsService.countByBrand(brand as string)
+        res.status(200).send({
+            success: true,
+            message: "Cars retrieved successfully",
+            result: cars,
+            meta: {
+                total,
+                page,
+                totalPages: Math.ceil(total / limit)
+            }
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
+
 export const getRecentCars = async (req: Request, res: Response) => {
     try {
         const result = await carsService.findRecent()

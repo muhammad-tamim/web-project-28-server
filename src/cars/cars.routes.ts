@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createCar, deleteCar, getCar, getCars, getCarsByEmail, getRecentCars, getSearch, updateCar } from "./cars.controllers.js";
+import { createCar, deleteCar, getCar, getCars, getCarsByBrand, getCarsByEmail, getRecentCars, getSearch, updateCar } from "./cars.controllers.js";
 import { validate } from "../middlewares/validate.js";
 import { createCarSchema, updateCarSchema } from "./cars.validation.js";
 
@@ -10,6 +10,7 @@ router.get('/', getCars)
 
 router.get('/recent', getRecentCars)
 router.get('/search', getSearch)
+router.get('/brands/:brand', getCarsByBrand)
 router.get('/owner/:email', getCarsByEmail)
 
 router.get('/:id', getCar)
