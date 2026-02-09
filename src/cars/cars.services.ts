@@ -6,12 +6,21 @@ export const carsCollection = client.db('web-project-28-DB').collection<CreateCa
 
 export const carsService = {
     create(car: CreateCarInput) {
-        const fullInput = { ...car, bookingCount: 0, bookingStatus: false, createdAt: new Date() }
+        const fullInput = { ...car, bookingCount: 0, bookingStatus: false, availability: true, createdAt: new Date() }
         return carsCollection.insertOne(fullInput)
     },
 
-    findAll() {
-        return carsCollection.find().toArray()
+    findAll(page = 1, limit = 9) {
+        const skip = (page - 1) * limit
+        return carsCollection.find().sort({ createdAt: -1 }).skip(skip).limit(limit).toArray()
+    },
+
+    countAll() {
+        return carsCollection.countDocuments()
+    },
+
+    findRecent() {
+        return carsCollection.find().sort({ createdAt: -1 }).limit(9).toArray()
     },
 
     findOne(id: string) {
@@ -26,8 +35,9 @@ export const carsService = {
         return carsCollection.deleteOne({ _id: new ObjectId(id) })
     },
 
-    findAllByEmail(email: string) {
-        return carsCollection.find({ ownerEmail: email }).toArray()
+    findAllByEmail(email: string, page = 1, limit = 9) {
+        const skip = (page - 1) * limit
+        return carsCollection.find({ email }).sort({ createdAt: -1 }).skip(skip).limit(limit).toArray()
     },
 
     findSearch(brand: string, sort: 'asc' | 'desc') {

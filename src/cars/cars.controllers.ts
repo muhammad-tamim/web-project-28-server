@@ -16,8 +16,30 @@ export const createCar = async (req: Request, res: Response) => {
 }
 
 export const getCars = async (req: Request, res: Response) => {
+    const page = Number(req.query.page)
+    const limit = Number(req.query.limit)
     try {
-        const result = await carsService.findAll()
+        const cars = await carsService.findAll(page, limit)
+        const total = await carsService.countAll()
+        res.status(200).send({
+            success: true,
+            message: "Cars retrieved successfully",
+            result: cars,
+            meta: {
+                total,
+                page,
+                totalPages: Math.ceil(total / limit)
+            }
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
+export const getRecentCars = async (req: Request, res: Response) => {
+    try {
+        const result = await carsService.findRecent()
         res.status(200).send({
             success: true,
             message: "Cars retrieved successfully",
@@ -73,12 +95,20 @@ export const deleteCar = async (req: Request, res: Response) => {
 }
 
 export const getCarsByEmail = async (req: Request, res: Response) => {
+    const page = Number(req.query.page)
+    const limit = Number(req.query.limit)
     try {
-        const result = await carsService.findAllByEmail(req.params.email as string)
+        const cars = await carsService.findAllByEmail(req.params.email as string, page, limit)
+        const total = await carsService.countAll()
         res.status(200).send({
             success: true,
             message: "Cars retrieved successfully",
-            result
+            result: cars,
+            meta: {
+                total,
+                page,
+                totalPages: Math.ceil(total / limit)
+            }
         })
     }
     catch (err: any) {
