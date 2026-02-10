@@ -1,8 +1,8 @@
-import { ObjectId } from "mongodb";
+import { ObjectId, OptionalId } from "mongodb";
 import { client } from "../config/db.js";
-import { CreateCarInput, UpdateCarInput } from "./cars.types.js";
+import { Car, CreateCarInput, UpdateCarInput } from "./cars.types.js";
 
-export const carsCollection = client.db('web-project-28-DB').collection<CreateCarInput>('cars')
+export const carsCollection = client.db('web-project-28-DB').collection<OptionalId<Car>>('cars');
 
 export const carsService = {
     create(car: CreateCarInput) {
