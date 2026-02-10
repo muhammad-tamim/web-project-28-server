@@ -43,8 +43,16 @@ export const bookingsService = {
             throw new Error("Car already booked");
         }
 
+        const updatedCar = await carsCollection.findOne({ _id: car._id });
+
+        const bookingData = {
+            ...booking,
+            totalCost,
+            car: updatedCar
+        };
+
         // Insert booking
-        return bookingsCollection.insertOne({ ...booking, totalCost });
+        return bookingsCollection.insertOne(bookingData);
     },
 
     findAll(email: string) {
@@ -66,23 +74,50 @@ export const bookingsService = {
             throw new Error("Invalid booking duration");
         }
 
-        const newDays = Math.ceil((newEnd.getTime() - newStart.getTime()) / (1000 * 60 * 60 * 24));
-        const previousDays = (booking.endDate.getTime() - booking.startDate.getTime()) / (1000 * 60 * 60 * 24)
-        const previousTotalCost = booking.totalCost
-        const NewTotalCost = newDays * previousTotalCost / previousDays
+        const days = Math.ceil((newEnd.getTime() - newStart.getTime()) / (1000 * 60 * 60 * 24));
+
+        const car = await carsCollection.findOne({ _id: new ObjectId(booking.carId) });
+
+        if (!car) {
+            throw new Error("Car not found");
+        }
+
+        const totalCost = days * car.dailyRentalPrice;
+
 
         const filter = { _id: new ObjectId(id) }
         const updatedDoc = {
             $set: {
                 startDate: newStart,
                 endDate: newEnd,
-                totalCost: NewTotalCost
+                totalCost
             }
         }
         return bookingsCollection.updateOne(filter, updatedDoc)
     },
 
-    delete(id: string) {
-        return bookingsCollection.deleteOne({ _id: new ObjectId(id) })
-    },
+    async delete(id: string) {
+        const booking = await bookingsCollection.findOne({ _id: new ObjectId(id) });
+
+        if (!booking) {
+            throw new Error("Booking not found");
+        }
+
+        await bookingsCollection.deleteOne({ _id: booking._id });
+
+        const filter = { _id: new ObjectId(booking.carId) }
+        const updatedDoc = {
+            $set: {
+                availability: true,
+                bookingStatus: false,
+            },
+        }
+
+        await carsCollection.updateOne(filter, updatedDoc);
+
+        return {
+            success: true,
+            message: "Booking deleted successfully",
+        };
+    }
 };
