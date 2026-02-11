@@ -165,12 +165,30 @@ export const getCarsByEmail = async (req: Request, res: Response) => {
 
 export const getSearch = async (req: Request, res: Response) => {
     try {
-        const { brand, sort } = req.query
-        const result = await carsService.findSearch(brand as string, sort as 'asc' | 'desc')
+        const { brand, category, sort, page, limit } = req.query
+
+        const pageNumber = Number(page)
+        const limitNumber = Number(limit)
+
+        const result = await carsService.findSearch(
+            brand as string,
+            category as string,
+            sort as 'asc' | 'desc',
+            pageNumber,
+            limitNumber
+        )
+
+        const total = await carsService.countBrandCategory(brand as string, category as string)
+
         res.status(200).send({
             success: true,
             message: "Cars retrieved successfully",
-            result
+            result,
+            meta: {
+                total,
+                page: pageNumber,
+                totalPages: Math.ceil(total / limitNumber),
+            }
         })
     }
     catch (err: any) {

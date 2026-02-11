@@ -58,16 +58,43 @@ export const carsService = {
         return carsCollection.find({ email }).sort({ createdAt: -1 }).skip(skip).limit(limit).toArray()
     },
 
-    findSearch(brand: string, sort: 'asc' | 'desc') {
+    findSearch(brand: string, category: string, sort: 'asc' | 'desc', page: number, limit: number) {
 
         const filter: any = {}
-        if (brand) filter.brand = brand
 
-        const sortOption: any = {}
-        if (sort === 'asc') sortOption.dailyRentalPrice = 1
-        else if (sort === 'desc') sortOption.dailyRentalPrice = -1
+        if (brand && brand !== 'Any Brand') {
+            filter.brand = { $regex: `^${brand}$`, $options: 'i' }
+        }
+        if (category && category !== 'Any Category') {
+            filter.category = { $regex: `^${category}$`, $options: 'i' }
+        }
 
-        return carsCollection.find(filter).sort(sortOption).toArray()
+        const sortOption: any = { createdAt: -1 }
+
+        if (sort === 'asc') {
+            sortOption.dailyRentalPrice = 1
+        }
+        if (sort === 'desc') {
+            sortOption.dailyRentalPrice = -1
+        }
+
+        const skip = (page - 1) * limit
+
+        return carsCollection.find(filter).sort(sortOption).skip(skip).limit(limit).toArray()
+    },
+
+    countBrandCategory(brand: string, category: string) {
+        const filter: any = {}
+
+        if (brand && brand !== 'Any Brand') {
+            filter.brand = brand
+        }
+
+        if (category && category !== 'Any Category') {
+            filter.category = category
+        }
+
+        return carsCollection.countDocuments(filter)
     }
 
 }
