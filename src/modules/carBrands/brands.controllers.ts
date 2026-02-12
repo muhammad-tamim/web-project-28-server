@@ -42,3 +42,18 @@ export const updateBrand = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const deleteBrand = async (req: Request, res: Response) => {
+    try {
+        const result = await brandsService.delete(req.params.id as string)
+        res.status(200).send({
+            success: true,
+            message: "Brand deleted successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
+

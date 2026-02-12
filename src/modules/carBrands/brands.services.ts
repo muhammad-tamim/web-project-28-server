@@ -13,7 +13,7 @@ export const brandsService = {
             throw new Error("Brand already exists")
         }
 
-        const fullInput = { ...brand, createdAt: new Date() }
+        const fullInput = { ...brand, carCount: 0, createdAt: new Date(), }
         return brandsCollection.insertOne(fullInput)
     },
 
@@ -23,5 +23,9 @@ export const brandsService = {
 
     update(id: string, data: UpdateBrandInput) {
         return brandsCollection.updateOne({ _id: new ObjectId(id) }, { $set: data as any })
+    },
+
+    delete(id: string) {
+        return brandsCollection.deleteOne({ _id: new ObjectId(id) })
     }
 }
