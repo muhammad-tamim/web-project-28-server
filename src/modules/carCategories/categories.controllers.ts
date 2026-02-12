@@ -42,3 +42,17 @@ export const updateCategory = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const deleteCategory = async (req: Request, res: Response) => {
+    try {
+        const result = await categoriesService.delete(req.params.id as string)
+        res.status(200).send({
+            success: true,
+            message: "Category Delete successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}

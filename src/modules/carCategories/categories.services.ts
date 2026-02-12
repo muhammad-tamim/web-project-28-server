@@ -13,7 +13,7 @@ export const categoriesService = {
             throw new Error("Types already exists")
         }
 
-        const fullInput = { ...category, createdAt: new Date() }
+        const fullInput = { ...category, carCount: 0, createdAt: new Date() }
         return categoriesCollection.insertOne(fullInput)
     },
 
@@ -23,5 +23,9 @@ export const categoriesService = {
 
     update(id: string, data: UpdateCategoryInput) {
         return categoriesCollection.updateOne({ _id: new ObjectId(id) }, { $set: data as any })
+    },
+
+    delete(id: string) {
+        return categoriesCollection.deleteOne({ _id: new ObjectId(id) })
     }
 }
