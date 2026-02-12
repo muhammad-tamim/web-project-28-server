@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import { client } from "../config/db.js";
+import { client } from "../../config/db.js";
 import { CreateBrandInput, UpdateBrandInput } from "./brands.types.js";
 
 export const brandsCollection = client.db('web-project-28-DB').collection<CreateBrandInput>('brands')

@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import { client } from "../config/db.js";
+import { client } from "../../config/db.js";
 import { CreateCategoryInput, UpdateCategoryInput } from "./categories.types.js";
 
 export const categoriesCollection = client.db('web-project-28-DB').collection<CreateCategoryInput>('types')

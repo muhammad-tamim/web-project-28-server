@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { createBrand, getBrands, updateBrand } from "./brands.controllers.js";
+import { validate } from "../../middlewares/validate.js";
 import { createBrandSchema, updateBrandSchema } from "./brands.validations.js";
-import { validate } from "../middlewares/validate.js";
+import { createBrand, getBrands, updateBrand } from "./brands.controllers.js";
 
 const router = Router()
 

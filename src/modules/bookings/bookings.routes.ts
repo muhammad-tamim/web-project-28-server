@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { validate } from "../middlewares/validate.js";
 import { createBookingSchema, updateBookingSchema } from "./bookings.validations.js";
 import { createBooking, deleteBooking, getBookings, updateBooking } from "./bookings.controllers.js";
+import { validate } from "../../middlewares/validate.js";
 
 const router = Router()
 

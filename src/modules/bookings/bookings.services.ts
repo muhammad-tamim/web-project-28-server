@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
-import { carsCollection } from "../cars/cars.services.js";
-import { client } from "../config/db.js";
+import { carsCollection } from "../../modules/cars/cars.services.js";
+import { client } from "../../config/db.js";
 import { CreateBookingInput, UpdateBookingInput } from "./bookings.types.js";
 
 const bookingsCollection = client.db("web-project-28-DB").collection<CreateBookingInput & { totalCost: number }>("bookings");

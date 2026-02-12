@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { createCar, deleteCar, getCar, getCars, getCarsByBrand, getCarsByCategory, getCarsByEmail, getRecentCars, getSearch, updateCar } from "./cars.controllers.js";
-import { validate } from "../middlewares/validate.js";
+import { validate } from "../../middlewares/validate.js";
 import { createCarSchema, updateCarSchema } from "./cars.validation.js";
 
 const router = Router()
