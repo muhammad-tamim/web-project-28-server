@@ -1,12 +1,19 @@
+// bookings.service.ts
 import { ObjectId } from "mongodb";
 import { carsCollection } from "../../modules/cars/cars.services.js";
 import { client } from "../../config/db.js";
-import { CreateBookingInput, UpdateBookingInput } from "./bookings.types.js";
+import { BookingDocument, CreateBookingInput, PaymentInfo, UpdateBookingInput } from "./bookings.types.js";
 
-const bookingsCollection = client.db("web-project-28-DB").collection<CreateBookingInput & { totalCost: number }>("bookings");
+const bookingsCollection = client.db("web-project-28-DB").collection<BookingDocument>("bookings");
 
 export const bookingsService = {
-    async create(booking: CreateBookingInput) {
+    async create(booking: CreateBookingInput, payment: PaymentInfo) {
+        // 1️⃣ Check if booking with this payment already exists
+        const existingBooking = await bookingsCollection.findOne({ "payment.sessionId": payment.sessionId });
+        if (existingBooking) {
+            return existingBooking; // Booking already exists, return it
+        }
+
         // Find car
         const car = await carsCollection.findOne({ _id: new ObjectId(booking.carId) });
 
@@ -48,7 +55,9 @@ export const bookingsService = {
         const bookingData = {
             ...booking,
             totalCost,
-            car: updatedCar
+            car: updatedCar,
+            payment,
+            createdAt: new Date()
         };
 
         // Insert booking
