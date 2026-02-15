@@ -116,6 +116,7 @@ export const bookingsService = {
 
         const filter = { _id: new ObjectId(booking.carId) }
         const updatedDoc = {
+            $inc: { bookingCount: -1 },
             $set: {
                 availability: true,
                 bookingStatus: false,
