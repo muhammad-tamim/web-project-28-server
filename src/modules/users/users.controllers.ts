@@ -50,3 +50,17 @@ export const getUserByEmail = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const updateUser = async (req: Request, res: Response) => {
+    try {
+        const result = await usersService.update(req.params.id as string, req.body)
+        res.status(200).send({
+            success: true,
+            message: "User update successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}

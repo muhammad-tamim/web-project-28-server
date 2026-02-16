@@ -1,5 +1,6 @@
+import { ObjectId } from "mongodb";
 import { client } from "../../config/db.js";
-import { CreateUserInput } from "./users.types.js";
+import { CreateUserInput, UpdateUserInput } from "./users.types.js";
 
 export const usersCollection = client.db('web-project-28-DB').collection<CreateUserInput>('users')
 
@@ -34,6 +35,10 @@ export const usersService = {
 
     findOneByEmail(email: string) {
         return usersCollection.findOne({ email })
+    },
+
+    update(id: string, data: UpdateUserInput) {
+        return usersCollection.updateOne({ _id: new ObjectId(id) }, { $set: data as any })
     }
 }
 
