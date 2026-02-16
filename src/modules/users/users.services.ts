@@ -21,31 +21,40 @@ export const usersService = {
 
         const fullInput = { ...user, createdAt: new Date(), lastLogin: new Date() }
         return usersCollection.insertOne(fullInput)
-    }
+    },
 
-    // alternative better option: 
-    /*
-          async create(user: CreateUserInput) {
-        
-            const result = await usersCollection.findOneAndUpdate(
-                { email: user.email },
-                {
-                    $setOnInsert: {
-                        ...user,
-                        createdAt: new Date(),
-                    },
-                    $set: {
-                        lastLogin: new Date(),
-                    }
-                },
-                {
-                    upsert: true,
-                    returnDocument: 'after'
-                }
-            )
-    
-            return result
-            }
-        }
-        */
+    findAll(page = 1, limit = 9) {
+        const skip = (page - 1) * limit
+        return usersCollection.find().sort({ createdAt: -1 }).skip(skip).limit(limit).toArray()
+    },
+
+    countAll() {
+        return usersCollection.countDocuments()
+    }
 }
+
+// alternative better option: 
+/*
+      async create(user: CreateUserInput) {
+    
+        const result = await usersCollection.findOneAndUpdate(
+            { email: user.email },
+            {
+                $setOnInsert: {
+                    ...user,
+                    createdAt: new Date(),
+                },
+                $set: {
+                    lastLogin: new Date(),
+                }
+            },
+            {
+                upsert: true,
+                returnDocument: 'after'
+            }
+        )
+ 
+        return result
+        }
+    }
+    */
