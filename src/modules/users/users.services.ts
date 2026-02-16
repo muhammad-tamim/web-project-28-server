@@ -30,6 +30,10 @@ export const usersService = {
 
     countAll() {
         return usersCollection.countDocuments()
+    },
+
+    findOneByEmail(email: string) {
+        return usersCollection.findOne({ email })
     }
 }
 
