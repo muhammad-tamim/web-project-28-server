@@ -26,7 +26,7 @@ export const usersService = {
 
     findAll(page = 1, limit = 9) {
         const skip = (page - 1) * limit
-        return usersCollection.find().sort({ createdAt: -1 }).skip(skip).limit(limit).toArray()
+        return usersCollection.find({ role: { $ne: 'admin' } }).sort({ createdAt: -1 }).skip(skip).limit(limit).toArray()
     },
 
     countAll() {
