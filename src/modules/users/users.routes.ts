@@ -6,10 +6,10 @@ import { createUser, getUserByEmail, getUsers, updateUser } from "./users.contro
 const router = Router()
 
 router.post('/', validate(createUserSchema), createUser)
-router.post('/', getUsers)
+router.get('/', getUsers)
 
 router.get('/:email', getUserByEmail)
 
-router.patch('/:id', updateUser)
+router.patch('/update/:id', updateUser)
 
 export const usersRoutes = router
