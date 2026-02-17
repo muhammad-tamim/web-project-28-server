@@ -72,6 +72,15 @@ export const bookingsService = {
         return bookingsCollection.find({ 'car.email': email }).toArray()
     },
 
+    findAllBySellerEmailWithPagination(email: string, page = 1, limit = 9) {
+        const skip = (page - 1) * limit
+        return bookingsCollection.find({ 'car.email': email }).sort({ createdAt: -1 }).skip(skip).limit(limit).toArray()
+    },
+
+    countAllBySellerEmail(email: string) {
+        return bookingsCollection.countDocuments({ 'car.email': email })
+    },
+
     async update(id: string, data: UpdateBookingInput) {
         const booking = await bookingsCollection.findOne({ _id: new ObjectId(id) });
 

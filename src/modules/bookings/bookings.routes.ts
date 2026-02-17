@@ -9,6 +9,7 @@ const router = Router()
 router.get('/:email', getBookings)
 
 router.get('/seller/:email', getBookingsBySellerEmail)
+router.get('/seller/pagination/:email', getBookingsBySellerEmail)
 
 router.patch('/:id', validate(updateBookingSchema), updateBooking)
 router.delete('/:id', deleteBooking)
