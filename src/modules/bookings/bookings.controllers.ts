@@ -16,6 +16,20 @@ export const getBookings = async (req: Request, res: Response) => {
     }
 }
 
+export const getBookingsBySellerEmail = async (req: Request, res: Response) => {
+    try {
+        const result = await bookingsService.findAllBySellerEmail(req.params.email as string)
+        res.status(200).send({
+            success: true,
+            message: "Seller booking info retrieved successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
 export const updateBooking = async (req: Request, res: Response) => {
     try {
         const result = await bookingsService.update(req.params.id as string, req.body)

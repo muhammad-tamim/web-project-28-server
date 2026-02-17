@@ -68,6 +68,10 @@ export const bookingsService = {
         return bookingsCollection.find({ email }).toArray()
     },
 
+    findAllBySellerEmail(email: string) {
+        return bookingsCollection.find({ 'car.email': email }).toArray()
+    },
+
     async update(id: string, data: UpdateBookingInput) {
         const booking = await bookingsCollection.findOne({ _id: new ObjectId(id) });
 
