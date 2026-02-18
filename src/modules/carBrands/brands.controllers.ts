@@ -57,3 +57,16 @@ export const deleteBrand = async (req: Request, res: Response) => {
     }
 }
 
+export const countAllBrand = async (req: Request, res: Response) => {
+    try {
+        const result = await brandsService.countAll()
+        res.status(200).send({
+            success: true,
+            message: "Brands count retrieved successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}

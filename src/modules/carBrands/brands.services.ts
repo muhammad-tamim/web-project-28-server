@@ -17,6 +17,10 @@ export const brandsService = {
         return brandsCollection.insertOne(fullInput)
     },
 
+    countAll() {
+        return brandsCollection.estimatedDocumentCount()
+    },
+
     findAll() {
         return brandsCollection.find().toArray()
     },
