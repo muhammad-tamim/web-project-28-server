@@ -17,6 +17,10 @@ export const categoriesService = {
         return categoriesCollection.insertOne(fullInput)
     },
 
+    countAll() {
+        return categoriesCollection.estimatedDocumentCount()
+    },
+
     findAll() {
         return categoriesCollection.find().toArray()
     },

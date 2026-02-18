@@ -56,3 +56,17 @@ export const deleteCategory = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const countAllCategory = async (req: Request, res: Response) => {
+    try {
+        const result = await categoriesService.countAll()
+        res.status(200).send({
+            success: true,
+            message: "Category count retrieved successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
