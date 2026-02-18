@@ -30,6 +30,28 @@ export const getAllBookings = async (req: Request, res: Response) => {
     }
 }
 
+export const getAllBookingsWithPagination = async (req: Request, res: Response) => {
+    const page = Number(req.query.page)
+    const limit = Number(req.query.limit)
+    try {
+        const bookings = await bookingsService.findAllBookingsWithPagination(page, limit)
+        const total = await bookingsService.countAll()
+        res.status(200).send({
+            success: true,
+            message: "Bookings retrieved successfully",
+            result: bookings,
+            meta: {
+                total,
+                page,
+                totalPages: Math.ceil(total / limit)
+            }
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
 
 export const getBookingsBySellerEmail = async (req: Request, res: Response) => {
     try {

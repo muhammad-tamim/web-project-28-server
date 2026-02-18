@@ -81,6 +81,12 @@ export const bookingsService = {
         return bookingsCollection.find().toArray()
     },
 
+    findAllBookingsWithPagination(page = 1, limit = 9) {
+        const skip = (page - 1) * limit
+        return bookingsCollection.find().sort({ createdAt: -1 }).skip(skip).limit(limit).toArray()
+    },
+
+
     countAll() {
         return bookingsCollection.countDocuments()
     },
