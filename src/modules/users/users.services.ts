@@ -45,6 +45,14 @@ export const usersService = {
         return usersCollection.countDocuments({ role: 'admin' })
     },
 
+    findRecentSellers() {
+        return usersCollection.find({ role: 'seller' }).sort({ createdAt: -1 }).limit(5).toArray()
+    },
+
+    findRecentCustomers() {
+        return usersCollection.find({ role: 'customer' }).sort({ createdAt: -1 }).limit(5).toArray()
+    },
+
     findOneByEmail(email: string) {
         return usersCollection.findOne({ email })
     },

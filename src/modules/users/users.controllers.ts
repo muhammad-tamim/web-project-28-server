@@ -120,3 +120,31 @@ export const getCountAllAdmin = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const getRecentSellers = async (req: Request, res: Response) => {
+    try {
+        const result = await usersService.findRecentSellers()
+        res.status(200).send({
+            success: true,
+            message: "User with role seller retrieved successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
+export const getRecentCustomers = async (req: Request, res: Response) => {
+    try {
+        const result = await usersService.findRecentCustomers()
+        res.status(200).send({
+            success: true,
+            message: "User with role customer retrieved successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
