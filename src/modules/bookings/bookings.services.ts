@@ -3,6 +3,8 @@ import { ObjectId } from "mongodb";
 import { carsCollection } from "../../modules/cars/cars.services.js";
 import { client } from "../../config/db.js";
 import { BookingDocument, CreateBookingInput, PaymentInfo, UpdateBookingInput } from "./bookings.types.js";
+import ExcelJS from "exceljs";
+import { format } from "date-fns";
 
 const bookingsCollection = client.db("web-project-28-DB").collection<BookingDocument>("bookings");
 
@@ -156,5 +158,46 @@ export const bookingsService = {
             success: true,
             message: "Booking deleted successfully",
         };
+    },
+
+    async createReport() {
+        // Fetch all bookings
+        const bookings = await bookingsCollection.find().sort({ createdAt: -1 }).toArray();
+
+        // Create workbook & worksheet
+        const workbook = new ExcelJS.Workbook();
+        const sheet = workbook.addWorksheet("Sales Report");
+
+        // Define columns
+        sheet.columns = [
+            { header: "Car Image", key: "carImage", width: 30 },
+            { header: "Car Name", key: "carName", width: 25 },
+            { header: "Seller Email", key: "sellerEmail", width: 25 },
+            { header: "Customer Email", key: "customerEmail", width: 25 },
+            { header: "Payment Date", key: "paymentDate", width: 20 },
+            { header: "Transaction ID", key: "transactionId", width: 35 },
+            { header: "Payment Amount", key: "paymentAmount", width: 15 },
+        ];
+
+        // Add rows
+        bookings.forEach((booking) => {
+            sheet.addRow({
+                carImage: booking.car.photoUrl,
+                carName: booking.car.name,
+                sellerEmail: booking.car.email,
+                customerEmail: booking.email,
+                paymentDate: format(new Date(booking.payment.paidAt), 'PP, p'),
+                transactionId: booking.payment.paymentIntentId,
+                paymentAmount: booking.payment.amount,
+            });
+        });
+
+        // Style header row
+        sheet.getRow(1).eachCell((cell) => {
+            cell.font = { bold: true };
+            cell.alignment = { vertical: "middle", horizontal: "center" };
+        });
+
+        return workbook
     }
 };

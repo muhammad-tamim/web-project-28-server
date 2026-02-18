@@ -118,3 +118,24 @@ export const deleteBooking = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const getReport = async (req: Request, res: Response) => {
+    try {
+        const workbook = await bookingsService.createReport()
+
+        res.setHeader(
+            "Content-Type",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        );
+        res.setHeader(
+            "Content-Disposition",
+            `attachment; filename="sales-report.xlsx"`
+        );
+
+        await workbook.xlsx.write(res)
+        res.end();
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
