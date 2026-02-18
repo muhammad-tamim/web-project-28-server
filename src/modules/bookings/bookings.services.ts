@@ -77,6 +77,14 @@ export const bookingsService = {
         return bookingsCollection.find({ 'car.email': email }).sort({ createdAt: -1 }).skip(skip).limit(limit).toArray()
     },
 
+    findAllBookings() {
+        return bookingsCollection.find().toArray()
+    },
+
+    countAll() {
+        return bookingsCollection.countDocuments()
+    },
+
     countAllBySellerEmail(email: string) {
         return bookingsCollection.countDocuments({ 'car.email': email })
     },
