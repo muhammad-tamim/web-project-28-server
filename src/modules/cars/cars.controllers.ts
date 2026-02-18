@@ -84,6 +84,7 @@ export const getCarsByCategory = async (req: Request, res: Response) => {
 }
 
 
+
 export const getRecentCars = async (req: Request, res: Response) => {
     try {
         const result = await carsService.findRecent()
@@ -189,6 +190,20 @@ export const getSearch = async (req: Request, res: Response) => {
                 page: pageNumber,
                 totalPages: Math.ceil(total / limitNumber),
             }
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
+export const getCountAllCars = async (req: Request, res: Response) => {
+    try {
+        const result = await carsService.countAll()
+        res.status(200).send({
+            success: true,
+            message: "all cars count retrieved successfully",
+            result
         })
     }
     catch (err: any) {

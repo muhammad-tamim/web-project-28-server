@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createCar, deleteCar, getCar, getCars, getCarsByBrand, getCarsByCategory, getCarsByEmail, getRecentCars, getSearch, updateCar } from "./cars.controllers.js";
+import { createCar, deleteCar, getCar, getCars, getCarsByBrand, getCarsByCategory, getCarsByEmail, getCountAllCars, getRecentCars, getSearch, updateCar } from "./cars.controllers.js";
 import { validate } from "../../middlewares/validate.js";
 import { createCarSchema, updateCarSchema } from "./cars.validation.js";
 
@@ -7,6 +7,8 @@ const router = Router()
 
 router.post('/', validate(createCarSchema), createCar)
 router.get('/', getCars)
+
+router.get('/count', getCountAllCars)
 
 router.get('/recent', getRecentCars)
 router.get('/search', getSearch)
