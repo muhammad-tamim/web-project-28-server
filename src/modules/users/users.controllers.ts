@@ -64,3 +64,59 @@ export const updateUser = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const getCountAll = async (req: Request, res: Response) => {
+    try {
+        const result = await usersService.countAll()
+        res.status(200).send({
+            success: true,
+            message: "User retrieved successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
+export const getCountAllCustomer = async (req: Request, res: Response) => {
+    try {
+        const result = await usersService.countAllCustomer()
+        res.status(200).send({
+            success: true,
+            message: "User with role customer count retrieved successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
+export const getCountAllSeller = async (req: Request, res: Response) => {
+    try {
+        const result = await usersService.countAllSeller()
+        res.status(200).send({
+            success: true,
+            message: "User with role seller count retrieved successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
+export const getCountAllAdmin = async (req: Request, res: Response) => {
+    try {
+        const result = await usersService.countAllAdmin()
+        res.status(200).send({
+            success: true,
+            message: "User with role admin count retrieved successfully",
+            result
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}

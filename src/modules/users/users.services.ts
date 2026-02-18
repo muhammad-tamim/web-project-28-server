@@ -33,6 +33,18 @@ export const usersService = {
         return usersCollection.countDocuments()
     },
 
+    countAllCustomer() {
+        return usersCollection.countDocuments({ role: 'customer' })
+    },
+
+    countAllSeller() {
+        return usersCollection.countDocuments({ role: 'seller' })
+    },
+
+    countAllAdmin() {
+        return usersCollection.countDocuments({ role: 'admin' })
+    },
+
     findOneByEmail(email: string) {
         return usersCollection.findOne({ email })
     },
