@@ -1,70 +1,59 @@
 // bookings.service.ts
 import { ObjectId } from "mongodb";
 import { carsCollection } from "../../modules/cars/cars.services.js";
+import { paymentsCollection } from "../sslcommerzPayments/sslcommerz.services.js";
 import { client } from "../../config/db.js";
-import { BookingDocument, CreateBookingInput, PaymentInfo, UpdateBookingInput } from "./bookings.types.js";
 import ExcelJS from "exceljs";
 import { format } from "date-fns";
 
-const bookingsCollection = client.db("web-project-28-DB").collection<BookingDocument>("bookings");
+const bookingsCollection = client.db("web-project-28-DB").collection("bookings");
 
 export const bookingsService = {
-    async create(booking: CreateBookingInput, payment: PaymentInfo) {
-        // 1️⃣ Check if booking with this payment already exists
-        const existingBooking = await bookingsCollection.findOne({ "payment.sessionId": payment.sessionId });
+
+    async create(tran_id: string) {
+        // 1️⃣ Find the payment
+        const payment = await paymentsCollection.findOne({ tran_id });
+        if (!payment) throw new Error("Payment not found");
+        if (payment.paymentStatus !== "complete") throw new Error("Payment not completed");
+
+        // 2️⃣ Check if a booking already exists for this transaction
+        const existingBooking = await bookingsCollection.findOne({ tran_id });
         if (existingBooking) {
-            return existingBooking; // Booking already exists, return it
+            return existingBooking; // Return existing booking instead of creating a duplicate
         }
 
-        // Find car
-        const car = await carsCollection.findOne({ _id: new ObjectId(booking.carId) });
+        // 3️⃣ Find the car
+        const car = await carsCollection.findOne({ _id: new ObjectId(payment.carId) });
+        if (!car) throw new Error("Car not found");
 
-        if (!car) {
-            throw new Error("Car not found");
-        }
-
-        if (!car.availability) {
-            throw new Error("Car is not available");
-        }
-
-        // days
-        const days = Math.ceil((booking.endDate.getTime() - booking.startDate.getTime()) / (1000 * 60 * 60 * 24));
-
-        if (days <= 0) {
-            throw new Error("Invalid booking duration");
-        }
-
-        // total cost
-        const totalCost = days * car.dailyRentalPrice;
-
-        // Update car
-        const filter = { _id: car._id, availability: true }
-        const updatedDoc = {
-            $inc: { bookingCount: 1 },
-            $set: {
-                bookingStatus: true,
-                availability: false,
-            },
-        }
-        const updatedResult = await carsCollection.updateOne(filter, updatedDoc);
-
-        if (updatedResult.modifiedCount === 0) {
-            throw new Error("Car already booked");
-        }
-
-        const updatedCar = await carsCollection.findOne({ _id: car._id });
-
-        const bookingData = {
-            ...booking,
-            totalCost,
-            car: updatedCar,
+        // 4️⃣ Prepare booking info, include tran_id to prevent duplicates
+        const bookingInfo = {
+            tran_id,
+            carId: payment.carId,
+            email: payment.cus_email,
+            startDate: payment.startDate,
+            endDate: payment.endDate,
+            totalCost: payment.total_amount,
+            car,
             payment,
-            createdAt: new Date()
+            createdAt: new Date(),
         };
 
-        // Insert booking
-        return bookingsCollection.insertOne(bookingData);
+        // 5️⃣ Insert the booking
+        const result = await bookingsCollection.insertOne(bookingInfo as any);
+
+        // 6️⃣ Update car stats
+        const updateResult = await carsCollection.updateOne(
+            { _id: new ObjectId(payment.carId) },
+            {
+                $set: { availability: false, bookingStatus: true },
+                $inc: { bookingCount: 1 }
+            }
+        );
+
+        return result;
     },
+
 
     findAll(email: string) {
         return bookingsCollection.find({ email }).toArray()
@@ -97,42 +86,6 @@ export const bookingsService = {
         return bookingsCollection.countDocuments({ 'car.email': email })
     },
 
-    async update(id: string, data: UpdateBookingInput) {
-        const booking = await bookingsCollection.findOne({ _id: new ObjectId(id) });
-
-        if (!booking) {
-            throw new Error("Booking not found");
-        }
-
-        const newStart = data.startDate ?? booking.startDate;
-        const newEnd = data.endDate ?? booking.endDate;
-
-
-        if (newEnd.getTime() <= newStart.getTime()) {
-            throw new Error("Invalid booking duration");
-        }
-
-        const days = Math.ceil((newEnd.getTime() - newStart.getTime()) / (1000 * 60 * 60 * 24));
-
-        const car = await carsCollection.findOne({ _id: new ObjectId(booking.carId) });
-
-        if (!car) {
-            throw new Error("Car not found");
-        }
-
-        const totalCost = days * car.dailyRentalPrice;
-
-
-        const filter = { _id: new ObjectId(id) }
-        const updatedDoc = {
-            $set: {
-                startDate: newStart,
-                endDate: newEnd,
-                totalCost
-            }
-        }
-        return bookingsCollection.updateOne(filter, updatedDoc)
-    },
 
     async delete(id: string) {
         const booking = await bookingsCollection.findOne({ _id: new ObjectId(id) });
