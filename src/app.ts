@@ -5,9 +5,9 @@ import { carsRoutes } from './modules/cars/cars.routes.js'
 import { bookingsRoutes } from './modules/bookings/bookings.routes.js'
 import { brandsRoutes } from './modules/carBrands/brands.routes.js'
 import { categoriesRoutes } from './modules/carCategories/categories.routes.js'
-import { stripeRoutes } from './modules/stripe/stripe.routes.js'
+import { stripeRoutes } from './modules/stripePayments/stripe.routes.js'
 import { usersRoutes } from './modules/users/users.routes.js'
-import { sslcommerzRoutes } from './modules/sslcommerzPayments/payments.routes.js'
+import { sslcommerzRoutes } from './modules/sslcommerzPayments/sslcommerz.routes.js'
 
 const app = express()
 

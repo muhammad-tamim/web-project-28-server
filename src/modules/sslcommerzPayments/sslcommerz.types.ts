@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { ObjectId } from "mongodb";
-import { initPaymentSchema } from "./payments.validations.js";
+import { initPaymentSchema } from "./sslcommerz.validations.js";
 
 export type InitPaymentInput = z.infer<typeof initPaymentSchema>;
 

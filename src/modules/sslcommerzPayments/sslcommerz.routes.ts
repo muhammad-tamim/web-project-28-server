@@ -1,9 +1,9 @@
 // sslcommerzPayments/payments.routes.ts
 
 import { Router } from "express";
-import { handlePaymentFailureORCancel, handlePaymentSuccess, initializePayment, validatePayment } from "./payments.controllers.js";
+import { handlePaymentFailureORCancel, handlePaymentSuccess, initializePayment, validatePayment } from "./sslcommerz.controllers.js";
 import { validate } from "../../middlewares/validate.js";
-import { initPaymentSchema, validatePaymentSchema } from "./payments.validations.js";
+import { initPaymentSchema, validatePaymentSchema } from "./sslcommerz.validations.js";
 
 const router = Router()
 

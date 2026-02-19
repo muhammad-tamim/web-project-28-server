@@ -2,7 +2,7 @@ import { ObjectId } from "mongodb";
 import { client } from "../../config/db.js";
 import { carsCollection } from "../cars/cars.services.js";
 import SSLCommerzPayment from "sslcommerz-lts";
-import { InitPaymentInput, Payment } from "./payments.types.js";
+import { InitPaymentInput, Payment } from "./sslcommerz.types.js";
 
 const paymentsCollection = client.db('web-project-28-DB').collection<Payment>('payments');
 
