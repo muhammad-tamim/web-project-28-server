@@ -1,3 +1,4 @@
+// stripe.validation.ts
 import { z } from "zod";
 
 export const initPaymentSchema = z.object({

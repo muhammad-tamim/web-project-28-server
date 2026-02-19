@@ -1,4 +1,3 @@
-// payments.controllers.ts
 import { Request, Response } from "express";
 import { paymentsService } from "./sslcommerz.services.js";
 

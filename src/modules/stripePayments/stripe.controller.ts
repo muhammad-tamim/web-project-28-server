@@ -1,67 +1,61 @@
 import { Request, Response } from "express";
 import { stripeService } from "./stripe.service.js";
-import { bookingsService } from "../bookings/bookings.services.js";
-import { StripeMetadata } from "./stripe.types.js";
+import { InitPaymentInput } from "./stripe.types.js";
 
-export const createStripeSession = async (req: Request, res: Response) => {
+// 🔹 Initialize Payment & Create Stripe Session
+export const initializePayment = async (req: Request, res: Response) => {
     try {
-        const url = await stripeService.createSession(req.body);
-        res.status(200).send({ url });
+        const payload: InitPaymentInput = req.body;
+        const result = await stripeService.init(payload);
+
+        res.status(200).json({
+            success: true,
+            message: "Stripe session created",
+            gatewayURL: result.gatewayURL,
+            tran_id: result.tran_id,
+            val_id: result.val_id,
+        });
     } catch (err: any) {
-        res.status(500).send({ message: err.message });
+        res.status(500).json({ success: false, message: err.message });
     }
 };
 
-export const verifyStripePayment = async (req: Request, res: Response) => {
+// 🔹 Handle Stripe Success Callback
+export const handlePaymentSuccess = async (req: Request, res: Response) => {
     try {
-        const { sessionId } = req.params;
+        const { tran_id, val_id } = req.body;
+        await stripeService.success(tran_id, val_id);
 
-        const session = await stripeService.verify(sessionId as string);
-
-        const metadata = session.metadata as StripeMetadata;
-
-        // Check metadata before booking
-        if (!metadata.carId || !metadata.email || !metadata.startDate || !metadata.endDate) {
-            return res.status(200).send({
-                success: true,
-                message: "Payment completed, but booking metadata is missing.",
-                paymentStatus: session.payment_status
-            });
-        }
-
-        try {
-            const payment = {
-                sessionId: session.id,
-                paymentIntentId: session.payment_intent as string,
-                amount: (session.amount_total ?? 0) / 100,
-                currency: session.currency ?? "usd",
-                status: session.payment_status,
-                paidAt: new Date(),
-            };
-
-            const result = await bookingsService.create(
-                {
-                    carId: metadata.carId,
-                    email: metadata.email,
-                    startDate: new Date(metadata.startDate),
-                    endDate: new Date(metadata.endDate),
-                },
-                payment
-            );
-
-            res.status(200).send({
-                success: true,
-                message: "Payment verified & booking created",
-                result,
-            });
-        } catch (bookingErr: any) {
-            res.status(200).send({
-                success: true,
-                message: "Payment verified, but booking could not be created: " + bookingErr.message
-            });
-        }
-
+        res.redirect(
+            `${process.env.CLIENT_URL}/payment-success?tran_id=${tran_id}&val_id=${val_id}&provider=stripe`
+        );
     } catch (err: any) {
-        res.status(500).send({ message: err.message });
+        res.status(500).json({ success: false, message: err.message });
+    }
+};
+
+// 🔹 Handle Stripe Cancel / Failure Callback
+export const handlePaymentCancel = async (req: Request, res: Response) => {
+    try {
+        const { tran_id } = req.body;
+        await stripeService.failOrCancel(tran_id);
+
+        res.redirect(
+            `${process.env.CLIENT_URL}/payment-cancel?tran_id=${tran_id}&provider=stripe`
+        );
+    } catch (err: any) {
+        res.status(500).json({ success: false, message: err.message });
+    }
+};
+
+// 🔹 Validate Stripe Payment (used by frontend)
+export const validatePayment = async (req: Request, res: Response) => {
+    try {
+        const { tran_id, val_id } = req.body;
+        const success = await stripeService.validate(tran_id, val_id);
+
+        res.status(200).json({ success });
+    } catch (err: any) {
+        res.status(500).json({ success: false, message: err.message });
     }
 };

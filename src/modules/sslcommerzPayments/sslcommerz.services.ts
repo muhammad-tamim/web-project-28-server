@@ -78,6 +78,11 @@ export const paymentsService = {
             throw new Error("Payment not found");
         }
 
+        if (payment.paymentStatus === "complete") {
+            return true;
+        }
+
+
         const filter = { tran_id }
         const updateDoc = {
             $set: { val_id }
@@ -111,7 +116,7 @@ export const paymentsService = {
         const filter = { tran_id }
         const updateDoc = {
             $set: {
-                paymentStatus: "paymentComplete",
+                paymentStatus: "complete",
                 updatedAt: new Date(),
             },
         }
