@@ -27,4 +27,6 @@ export interface Payment {
     paymentStatus: "pending" | "complete" | "failed";
     createdAt: Date;
     updatedAt?: Date;
+
+    paymentMethod: 'stripe' | 'sslcommerz'
 }

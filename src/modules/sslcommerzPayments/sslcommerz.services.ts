@@ -47,6 +47,8 @@ export const paymentsService = {
             cus_phone: payload.cus_phone,
             paymentStatus: "pending",
             createdAt: new Date(),
+
+            paymentMethod: "sslcommerz"
         };
 
         await paymentsCollection.insertOne(payment as Payment);

@@ -45,6 +45,8 @@ export const stripeService = {
 
             paymentStatus: "pending",
             createdAt: new Date(),
+
+            paymentMethod: 'stripe'
         };
         await paymentsCollection.insertOne(payment);
 
