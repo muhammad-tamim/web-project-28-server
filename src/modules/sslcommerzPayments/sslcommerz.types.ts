@@ -27,5 +27,7 @@ export interface Payment {
     createdAt: Date;
     updatedAt?: Date;
 
-    paymentMethod: 'stripe' | 'sslcommerz'
+    paymentMethod: 'stripe' | 'sslcommerz',
+    startDate: string;
+    endDate: string;
 }

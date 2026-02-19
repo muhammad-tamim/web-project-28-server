@@ -4,7 +4,7 @@ import { carsCollection } from "../cars/cars.services.js";
 import SSLCommerzPayment from "sslcommerz-lts";
 import { InitPaymentInput, Payment } from "./sslcommerz.types.js";
 
-const paymentsCollection = client.db('web-project-28-DB').collection<Payment>('payments');
+export const paymentsCollection = client.db('web-project-28-DB').collection<Payment>('payments');
 
 const sslcommerz = new SSLCommerzPayment(
     process.env.STORE_ID!,
@@ -48,7 +48,9 @@ export const paymentsService = {
             paymentStatus: "pending",
             createdAt: new Date(),
 
-            paymentMethod: "sslcommerz"
+            paymentMethod: "sslcommerz",
+            startDate: payload.startDate,
+            endDate: payload.endDate
         };
 
         await paymentsCollection.insertOne(payment as Payment);
