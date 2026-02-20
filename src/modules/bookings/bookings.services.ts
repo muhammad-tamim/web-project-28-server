@@ -17,17 +17,11 @@ export const bookingsService = {
         if (!payment) throw new Error("Payment not found");
         if (payment.paymentStatus !== "complete") throw new Error("Payment not completed");
 
-        // 2️⃣ Check if a booking already exists for this transaction
-        const existingBooking = await bookingsCollection.findOne({ tran_id });
-        if (existingBooking) {
-            return existingBooking; // Return existing booking instead of creating a duplicate
-        }
-
-        // 3️⃣ Find the car
+        // 2️⃣ Find the car
         const car = await carsCollection.findOne({ _id: new ObjectId(payment.carId) });
         if (!car) throw new Error("Car not found");
 
-        // 4️⃣ Prepare booking info, include tran_id to prevent duplicates
+        // 3️⃣ Prepare booking info
         const bookingInfo = {
             tran_id,
             carId: payment.carId,
@@ -40,38 +34,52 @@ export const bookingsService = {
             createdAt: new Date(),
         };
 
-        // 5️⃣ Insert the booking
-        const result = await bookingsCollection.insertOne(bookingInfo as any);
-
-        // 6️⃣ Update car stats
-        const updateResult = await carsCollection.updateOne(
-            { _id: new ObjectId(payment.carId) },
-            {
-                $set: { availability: false, bookingStatus: true },
-                $inc: { bookingCount: 1 }
-            }
+        // 4️⃣ Atomic upsert — insert only if missing
+        const result = await bookingsCollection.findOneAndUpdate(
+            { tran_id },                     // filter
+            { $setOnInsert: bookingInfo },    // insert only if missing
+            { returnDocument: "after", upsert: true } // return created or existing
         );
 
-        // 7️⃣ Send simple email notification
-        const emailHtml = `
-    <h2>Booking Confirmed!</h2>
-    <p>Hi ${payment.cus_name},</p>
-    <p>Your payment of <b>${payment.total_amount} ${payment.currency}</b> was successful.</p>
-    <p>Your booking for <b>${car.name}</b> from <b>${payment.startDate}</b> to <b>${payment.endDate}</b> has been created.</p>
-    <p>Invoice ID: <b>${tran_id}</b></p>
-    <p>Thank you for choosing our service!</p>
-  `;
+        if (!result || !result.value) {
+            throw new Error("Failed to create or fetch booking");
+        }
 
-        await transporter.sendMail({
-            from: `"REXTAX" ${process.env.GOOGLE_APP_USER}`,
-            to: payment.cus_email,
-            subject: `Booking Confirmed - ${tran_id}`,
-            html: emailHtml,
-        });
+        const booking = result.value; // the actual booking document
 
-        return result;
+        // 5️⃣ Only update car & send email if this is a new booking
+        const isNewBooking = !!result.lastErrorObject?.upserted; // true if newly inserted
+        if (isNewBooking) {
+            // Update car stats
+            await carsCollection.updateOne(
+                { _id: new ObjectId(payment.carId) },
+                {
+                    $set: { availability: false, bookingStatus: true },
+                    $inc: { bookingCount: 1 },
+                }
+            );
+
+            // Send email notification
+            const emailHtml = `
+      <h2>Booking Confirmed!</h2>
+      <p>Hi ${payment.cus_name},</p>
+      <p>Your payment of <b>${payment.total_amount} ${payment.currency}</b> was successful.</p>
+      <p>Your booking for <b>${car.name}</b> from <b>${payment.startDate}</b> to <b>${payment.endDate}</b> has been created.</p>
+      <p>Invoice ID: <b>${tran_id}</b></p>
+      <p>Thank you for choosing our service!</p>
+    `;
+
+            await transporter.sendMail({
+                from: `"REXTAX" ${process.env.GOOGLE_APP_USER}`,
+                to: payment.cus_email,
+                subject: `Booking Confirmed - ${tran_id}`,
+                html: emailHtml,
+            });
+        }
+
+        // 6️⃣ Return the booking document (existing or newly inserted)
+        return booking;
     },
-
 
     findAll(email: string) {
         return bookingsCollection.find({ email }).toArray()
