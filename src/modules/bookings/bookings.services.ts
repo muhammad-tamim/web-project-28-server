@@ -5,6 +5,7 @@ import { paymentsCollection } from "../sslcommerzPayments/sslcommerz.services.js
 import { client } from "../../config/db.js";
 import ExcelJS from "exceljs";
 import { format } from "date-fns";
+import { transporter } from "../../utils/nodemailer.js";
 
 const bookingsCollection = client.db("web-project-28-DB").collection("bookings");
 
@@ -50,6 +51,23 @@ export const bookingsService = {
                 $inc: { bookingCount: 1 }
             }
         );
+
+        // 7️⃣ Send simple email notification
+        const emailHtml = `
+    <h2>Booking Confirmed!</h2>
+    <p>Hi ${payment.cus_name},</p>
+    <p>Your payment of <b>${payment.total_amount} ${payment.currency}</b> was successful.</p>
+    <p>Your booking for <b>${car.name}</b> from <b>${payment.startDate}</b> to <b>${payment.endDate}</b> has been created.</p>
+    <p>Invoice ID: <b>${tran_id}</b></p>
+    <p>Thank you for choosing our service!</p>
+  `;
+
+        await transporter.sendMail({
+            from: `"REXTAX" ${process.env.GOOGLE_APP_USER}`,
+            to: payment.cus_email,
+            subject: `Booking Confirmed - ${tran_id}`,
+            html: emailHtml,
+        });
 
         return result;
     },
