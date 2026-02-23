@@ -1,0 +1,302 @@
+[
+    {
+        "name": "BMW 3 Series 2024",
+        "photoUrl": "https://bmw.scene7.com/is/image/BMW/g20_ice_stage-50-years:16to7?fmt=webp&wid=2560&hei=1120",
+        "model": "3 Series",
+        "year": 2024,
+        "brand": "BMW",
+        "category": "SEDAN",
+        "registrationNumber": "DHK-8001",
+        "dailyRentalPrice": 95,
+        "features": [
+            "5 Seat",
+            "Leather Interior",
+            "Digital Cluster",
+            "Rear Camera",
+            "Parking Assist"
+        ],
+        "description": "Premium German sedan offering balanced performance and luxury.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:00:00.000Z"
+    },
+    {
+        "name": "BMW X5 2024",
+        "photoUrl": "https://bmw.scene7.com/is/image/BMW/BMW-MY26-X5-DI22_000115561-retouched:3to2?fmt=webp&wid=2560&hei=1707",
+        "model": "X5",
+        "year": 2024,
+        "brand": "BMW",
+        "category": "SUV",
+        "registrationNumber": "DHK-8002",
+        "dailyRentalPrice": 140,
+        "features": [
+            "SUV",
+            "AWD",
+            "Panoramic Roof",
+            "Premium Sound",
+            "Adaptive Cruise"
+        ],
+        "description": "Luxury SUV with strong road presence and smooth ride.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:01:00.000Z"
+    },
+    {
+        "name": "BMW i4 2024",
+        "photoUrl": "https://bmw.scene7.com/is/image/BMW/BMW-MY26-4SeriesGC-DI24_000200155-Retouched:3to2?fmt=webp&wid=2560&hei=1707",
+        "model": "i4",
+        "year": 2024,
+        "brand": "BMW",
+        "category": "ELECTRIC",
+        "registrationNumber": "DHK-8003",
+        "dailyRentalPrice": 150,
+        "features": [
+            "Electric",
+            "Fast Charging",
+            "Digital Display",
+            "Autonomous Assist",
+            "Luxury Interior"
+        ],
+        "description": "Fully electric sedan with sporty driving dynamics.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:02:00.000Z"
+    },
+    {
+        "name": "Audi A6 2024",
+        "photoUrl": "https://mediaservice.audi.com/media/fast/v3_xWTXWhbdRjG__6yrjY5SXpO19Oc7JhIzkksk7gkTZvWGVl3MXchrmyugh_Ef5PTNG2-SE6zju1iN2JvBEEZihOnVEEtOnEMdcIcYzDRDdQLx0CodwpV8INVFIand-8Dz_PwXjy_9d9E33JH8MyB9b9G_tl575MbCLHSFsK3Jvrc5c5c6x4hxAz-WkNWnb2Lbac6YsuJtLPipmWvvTeXyU2k5US91milp4-NT2XT-ZlMWtbrYdHvBYVPiP7TQvSd264RoaHlTr0tO7LxUMfptlvNbq3nqKPjc3OZQm58MleWU5OVsblCbr6SlYXyREEWshmZL0xmcoWJSlnzKq4Jn9cudjWr5fJ8p9V0x_IVp7vkttordbFzvpmTU1WxY_stEk9z39sMv4x-FP08-qcYYDxCdIDow0RfJfo-0c-If0D8EvHvSNwm8SeWwFrE-oPkXVJjpJYQ-_EH8b-A_zJKh3CAyEkiH7P7FuYi5rOYq5hd4vuwX8G-SXILkUO9jDbE8Bn0LPp-olVMA3MU8xC2D3sP9m2Sn-Dvx_8uygMojxLKo7poTbSv0R_EWML4BuNvoptYA9hh7AR2CXuN5BiBQwTuoFxAi6AdRH-P4DrBzwleJHiH0Duo-1CfQ5WoV1Fvou1BG0c7jHYc4xLmE5inMK8S-4nYFrH_iN0lvoP4IInrJH7HimCdwXKxvsSexd4iqZE0SB4muYGyRvAcwQsEfyXcInyWwWMMnseaItIl8gbGGtGniF4k-gVmhdgVYlexvkJRCd9iV5XhBfQX0a8wcp3IKsnnSZ4lecObH6IfcYqBDfyP4T-Cv43_WwJzBE4QuIaioHxE8CWCPxAKEjIJnSY8TXiV8FvoBzHeJPozuyuYH2J-T7xAfJZ4j8S_WKOo02hhjCMYJzAVrBtYv6D4UO4ntEl4E7UP9XX0k-g_ent7zWn2at7OGk7TLc50aj3pOqXZWr0uSwdkeald93Q3dbxWcReK2alcJrXg1KoLbjGbz2dSst5ekMV5We86qbJsOB1ZPOp6HJWmS7lSJuMZmh5Xbs0DoTjT6ta2r8e346mu6zidWrMqm9W6U8xmUg3HlRXpyp7T6XquYm7INz078z8ExCHvvwMAAA?wid=1540",
+        "model": "A6",
+        "year": 2024,
+        "brand": "AUDI",
+        "category": "PRIMIUM",
+        "registrationNumber": "DHK-8004",
+        "dailyRentalPrice": 125,
+        "features": [
+            "5 Seat",
+            "Virtual Cockpit",
+            "Leather Seats",
+            "Parking Sensors",
+            "Climate Control"
+        ],
+        "description": "Executive sedan combining innovation and elegance.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:03:00.000Z"
+    },
+    {
+        "name": "Audi Q7 2024",
+        "photoUrl": "https://nar-dam.audi.com/adobe/assets/urn:aaid:aem:7e214577-a428-42ac-9f98-adb6a16314a5/as/1920x1080_DSC_5161-build-4.15.22-v1.jpg?width=1440",
+        "model": "Q7",
+        "year": 2024,
+        "brand": "AUDI",
+        "category": "SUV",
+        "registrationNumber": "DHK-8005",
+        "dailyRentalPrice": 155,
+        "features": [
+            "7 Seat",
+            "Quattro AWD",
+            "Premium Audio",
+            "Touchscreen",
+            "Blind Spot Monitor"
+        ],
+        "description": "Spacious premium SUV suitable for families.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:04:00.000Z"
+    },
+    {
+        "name": "Audi RS5 2023",
+        "photoUrl": "https://hips.hearstapps.com/hmg-prod/images/audi-rs5-competition-package-1-1652285181.jpg?crop=1xw:1xh;center,top",
+        "model": "RS5",
+        "year": 2023,
+        "brand": "AUDI",
+        "category": "SPORTS",
+        "registrationNumber": "DHK-8006",
+        "dailyRentalPrice": 180,
+        "features": [
+            "Sport Mode",
+            "Turbo Engine",
+            "Premium Interior",
+            "Launch Control",
+            "Sport Exhaust"
+        ],
+        "description": "High-performance coupe built for speed enthusiasts.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:05:00.000Z"
+    },
+    {
+        "name": "Bugatti Chiron",
+        "photoUrl": "https://hips.hearstapps.com/hmg-prod/images/2022-bugatti-chiron-super-sport-104-1647448344.jpg?crop=0.869xw:0.656xh;0.107xw,0.0697xh",
+        "model": "Chiron",
+        "year": 2024,
+        "brand": "BUGATTI",
+        "category": "SPORTS",
+        "registrationNumber": "DHK-8007",
+        "dailyRentalPrice": 2000,
+        "features": [
+            "W16 Engine",
+            "Carbon Fiber Body",
+            "Luxury Interior",
+            "Track Mode",
+            "Premium Sound"
+        ],
+        "description": "Ultra-exclusive hypercar delivering extreme performance.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:06:00.000Z"
+    },
+    {
+        "name": "Ferrari F8 Tributo",
+        "photoUrl": "https://hips.hearstapps.com/hmg-prod/images/2020-ferrari-f8-tributo-209-1590706668.jpg?crop=0.843xw:0.712xh;0.111xw,0.108xh&resize=2048:*",
+        "model": "F8 Tributo",
+        "year": 2023,
+        "brand": "FARRARI",
+        "category": "SPORTS",
+        "registrationNumber": "DHK-8008",
+        "dailyRentalPrice": 900,
+        "features": [
+            "Twin Turbo V8",
+            "Sport Exhaust",
+            "Carbon Fiber",
+            "Track Mode",
+            "Luxury Cabin"
+        ],
+        "description": "Italian supercar with breathtaking acceleration.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:07:00.000Z"
+    },
+    {
+        "name": "Ford Explorer 2024",
+        "photoUrl": "https://hips.hearstapps.com/hmg-prod/images/2022-ford-explorer-timberline-464-1649185263.jpg?crop=1xw:1xh;center,top",
+        "model": "Explorer",
+        "year": 2024,
+        "brand": "FORD",
+        "category": "SUV",
+        "registrationNumber": "DHK-8009",
+        "dailyRentalPrice": 110,
+        "features": [
+            "7 Seat",
+            "Touchscreen",
+            "Rear Camera",
+            "Cruise Control",
+            "AWD"
+        ],
+        "description": "Reliable and spacious SUV for long trips.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:08:00.000Z"
+    },
+    {
+        "name": "Ford Mustang GT",
+        "photoUrl": "https://hips.hearstapps.com/hmg-prod/images/2026-mustang-fx-package-21-6843458c131a9.jpg?crop=1xw:1xh;center,top",
+        "model": "Mustang GT",
+        "year": 2023,
+        "brand": "FORD",
+        "category": "SPORTS",
+        "registrationNumber": "DHK-8010",
+        "dailyRentalPrice": 150,
+        "features": [
+            "V8 Engine",
+            "Sport Mode",
+            "Premium Audio",
+            "Rear Camera",
+            "Launch Control"
+        ],
+        "description": "Iconic American muscle car.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:09:00.000Z"
+    },
+    {
+        "name": "Mercedes S-Class 2024",
+        "photoUrl": "https://hips.hearstapps.com/hmg-prod/images/2022-mercedes-benz-s500-4matic-119-1642184026.jpg?crop=0.788xw:0.592xh;0.168xw,0.257xh",
+        "model": "S-Class",
+        "year": 2024,
+        "brand": "MERCEDES",
+        "category": "PRIMIUM",
+        "registrationNumber": "DHK-8011",
+        "dailyRentalPrice": 220,
+        "features": [
+            "Luxury Interior",
+            "Massage Seats",
+            "Ambient Lighting",
+            "Digital Cockpit",
+            "Safety Assist"
+        ],
+        "description": "Flagship luxury sedan with cutting-edge technology.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:10:00.000Z"
+    },
+    {
+        "name": "Mercedes GLE 2024",
+        "photoUrl": "https://hips.hearstapps.com/hmg-prod/images/2024-mercedes-benz-gle450-exterior-102-677eca51945f8.jpg?crop=0.704xw:0.525xh;0.277xw,0.348xh",
+        "model": "GLE",
+        "year": 2024,
+        "brand": "MERCEDES",
+        "category": "SUV",
+        "registrationNumber": "DHK-8012",
+        "dailyRentalPrice": 170,
+        "features": [
+            "AWD",
+            "Panoramic Roof",
+            "Premium Sound",
+            "Digital Display",
+            "Advanced Safety"
+        ],
+        "description": "Luxury SUV delivering comfort and power.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:11:00.000Z"
+    },
+    {
+        "name": "Tesla Model 3",
+        "photoUrl": "https://hips.hearstapps.com/hmg-prod/images/2026-tesla-model-3-performance-103-68a6100d88660.jpg?crop=0.529xw:0.528xh;0.242xw,0.250xh&resize=2048:*",
+        "model": "Model 3",
+        "year": 2024,
+        "brand": "TESLA",
+        "category": "ELECTRIC",
+        "registrationNumber": "DHK-8013",
+        "dailyRentalPrice": 130,
+        "features": [
+            "Electric",
+            "Autopilot",
+            "Touchscreen",
+            "Fast Charging",
+            "Glass Roof"
+        ],
+        "description": "Electric sedan with instant torque.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:12:00.000Z"
+    },
+    {
+        "name": "Tesla Model X",
+        "photoUrl": "https://hips.hearstapps.com/hmg-prod/images/2026-tesla-model-x-185-690cc64d3dc62.jpg?crop=0.655xw:0.553xh;0.181xw,0.291xh&resize=2048:*",
+        "model": "Model X",
+        "year": 2024,
+        "brand": "TESLA",
+        "category": "ELECTRIC",
+        "registrationNumber": "DHK-8014",
+        "dailyRentalPrice": 190,
+        "features": [
+            "Electric SUV",
+            "Falcon Doors",
+            "Autopilot",
+            "Large Display",
+            "AWD"
+        ],
+        "description": "High-tech electric SUV with premium features.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:13:00.000Z"
+    },
+    {
+        "name": "Rolls-Royce Phantom",
+        "photoUrl": "https://hips.hearstapps.com/hmg-prod/images/2026-rolls-royce-phantom-pr-123-690cd211484fb.jpg?crop=0.553xw:0.554xh;0.106xw,0.344xh&resize=2048:*",
+        "model": "Phantom",
+        "year": 2024,
+        "brand": "ROOLS-ROYCE",
+        "category": "PRIMIUM",
+        "registrationNumber": "DHK-8015",
+        "dailyRentalPrice": 600,
+        "features": [
+            "Ultra Luxury",
+            "Starlight Headliner",
+            "Premium Leather",
+            "Rear Entertainment",
+            "Advanced Suspension"
+        ],
+        "description": "Ultimate expression of automotive luxury.",
+        "isAvailable": true,
+        "createdAt": "2026-02-23T20:14:00.000Z"
+    }
+]
