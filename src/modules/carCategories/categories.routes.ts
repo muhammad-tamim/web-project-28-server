@@ -3,15 +3,16 @@ import { validate } from "../../middlewares/validate.js";
 import { createCategorySchema, updateCategorySchema } from "./categories.validations.js";
 import { countAllCategory, createCategory, deleteCategory, getCategories, updateCategory } from "./categories.controllers.js";
 import { verifyToken } from "../../middlewares/verifyToken.js";
+import { verifyAdmin } from "../../middlewares/verifyAdmin.js";
 
 const router = Router()
 
-router.post('/', verifyToken, validate(createCategorySchema), createCategory)
-router.get('/', verifyToken, getCategories)
+router.post('/', verifyToken, verifyAdmin, validate(createCategorySchema), createCategory)
+router.get('/', verifyToken, verifyAdmin, getCategories)
 
-router.get('/count', verifyToken, countAllCategory)
+router.get('/count', verifyToken, verifyAdmin, countAllCategory)
 
-router.patch('/:id', verifyToken, validate(updateCategorySchema), updateCategory)
-router.delete('/:id', verifyToken, deleteCategory)
+router.patch('/:id', verifyToken, verifyAdmin, validate(updateCategorySchema), updateCategory)
+router.delete('/:id', verifyToken, verifyAdmin, deleteCategory)
 
 export const categoriesRoutes = router
