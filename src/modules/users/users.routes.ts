@@ -8,18 +8,18 @@ import { verifyAdmin } from "../../middlewares/verifyAdmin.js";
 const router = Router()
 
 router.post('/', validate(createUserSchema), createUser)
-router.get('/', verifyToken, verifyAdmin, getUsers)
+router.get('/', getUsers)
 
-router.get("/count", verifyToken, getCountAll)
-router.get("/count/customer", verifyToken, getCountAllCustomer)
-router.get("/count/seller", verifyToken, getCountAllSeller)
-router.get("/count/admin", verifyToken, getCountAllAdmin)
+router.get("/count", getCountAll)
+router.get("/count/customer", getCountAllCustomer)
+router.get("/count/seller", getCountAllSeller)
+router.get("/count/admin", getCountAllAdmin)
 
-router.get('/recent-customers', verifyToken, getRecentCustomers)
-router.get('/recent-sellers', verifyToken, getRecentSellers)
+router.get('/recent-customers', getRecentCustomers)
+router.get('/recent-sellers', getRecentSellers)
 
-router.get('/:email', verifyToken, getUserByEmail)
+router.get('/:email', getUserByEmail)
 
-router.patch('/update/:id', verifyToken, verifyAdmin, updateUser)
+router.patch('/update/:id', updateUser)
 
 export const usersRoutes = router

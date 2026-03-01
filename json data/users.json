@@ -4,20 +4,26 @@
         "email": "customer@gmail.com",
         "photoUrl": "https://i.ibb.co.com/zV0mRkGC/customer.png",
         "role": "customer",
-        "wantToSellerRequest": false
+        "wantToSellerRequest": false,
+        "createdAt": "2026-03-01T09:15:23.123Z",
+        "lastLogin": "2026-03-01T09:15:23.123Z"
     },
     {
         "name": "seller",
         "email": "seller@gmail.com",
         "photoUrl": "https://i.ibb.co.com/F4jwGvy4/seller.png",
         "role": "customer",
-        "wantToSellerRequest": true
+        "wantToSellerRequest": true,
+        "createdAt": "2026-03-01T09:15:23.123Z",
+        "lastLogin": "2026-03-01T09:15:23.123Z"
     },
     {
         "name": "admin",
         "email": "admin@gmail.com",
         "photoUrl": "https://i.ibb.co.com/ksJHp0dX/protection.png",
         "role": "admin",
-        "wantToSellerRequest": false
+        "wantToSellerRequest": false,
+        "createdAt": "2026-03-01T09:15:23.123Z",
+        "lastLogin": "2026-03-01T09:15:23.123Z"
     }
 ]

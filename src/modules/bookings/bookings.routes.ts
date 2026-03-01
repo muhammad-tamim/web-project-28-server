@@ -7,15 +7,15 @@ import { verifyToken } from "../../middlewares/verifyToken.js";
 
 const router = Router()
 
-router.post('/', verifyToken, validate(createBookingSchema), createBooking)
-router.get('/pagination', verifyToken, getAllBookingsWithPagination)
-router.get('/report', verifyToken, getReport)
-router.get('/seller/pagination/:email', verifyToken, getBookingsBySellerEmail)
-router.get('/seller/:email', verifyToken, getBookingsBySellerEmail)
-router.get('/', verifyToken, getAllBookings)
+router.post('/', validate(createBookingSchema), createBooking)
+router.get('/pagination', getAllBookingsWithPagination)
+router.get('/report', getReport)
+router.get('/seller/pagination/:email', getBookingsBySellerEmail)
+router.get('/seller/:email', getBookingsBySellerEmail)
+router.get('/', getAllBookings)
 
-router.get('/:email', verifyToken, getBookings)
+router.get('/:email', getBookings)
 
-router.delete('/:id', verifyToken, deleteBooking)
+router.delete('/:id', deleteBooking)
 
 export const bookingsRoutes = router

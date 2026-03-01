@@ -154,9 +154,9 @@ export const bookingsService = {
                 carName: booking.car.name,
                 sellerEmail: booking.car.email,
                 customerEmail: booking.email,
-                paymentDate: format(new Date(booking.payment.paidAt), 'PP, p'),
-                transactionId: booking.payment.paymentIntentId,
-                paymentAmount: booking.payment.amount,
+                paymentDate: format(new Date(booking.payment.createdAt), 'PP, p'),
+                transactionId: booking.payment.tran_id,
+                paymentAmount: booking.payment.total_amount,
             });
         });
 
