@@ -8,16 +8,13 @@
         "category": "SEDAN",
         "registrationNumber": "DHK-8001",
         "dailyRentalPrice": 95,
-        "features": [
-            "5 Seat",
-            "Leather Interior",
-            "Digital Cluster",
-            "Rear Camera",
-            "Parking Assist"
-        ],
+        "features": "5 Seat, Leather Interior, Digital Cluster, Rear Camera, Parking Assist",
         "description": "Premium German sedan offering balanced performance and luxury.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:00:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "BMW X5 2024",
@@ -28,16 +25,13 @@
         "category": "SUV",
         "registrationNumber": "DHK-8002",
         "dailyRentalPrice": 140,
-        "features": [
-            "SUV",
-            "AWD",
-            "Panoramic Roof",
-            "Premium Sound",
-            "Adaptive Cruise"
-        ],
+        "features": "SUV, AWD, Panoramic Roof, Premium Sound, Adaptive Cruise",
         "description": "Luxury SUV with strong road presence and smooth ride.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:01:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "BMW i4 2024",
@@ -48,16 +42,13 @@
         "category": "ELECTRIC",
         "registrationNumber": "DHK-8003",
         "dailyRentalPrice": 150,
-        "features": [
-            "Electric",
-            "Fast Charging",
-            "Digital Display",
-            "Autonomous Assist",
-            "Luxury Interior"
-        ],
+        "features": "Electric, Fast Charging, Digital Display, Autonomous Assist, Luxury Interior",
         "description": "Fully electric sedan with sporty driving dynamics.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:02:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "Audi A6 2024",
@@ -68,16 +59,13 @@
         "category": "PRIMIUM",
         "registrationNumber": "DHK-8004",
         "dailyRentalPrice": 125,
-        "features": [
-            "5 Seat",
-            "Virtual Cockpit",
-            "Leather Seats",
-            "Parking Sensors",
-            "Climate Control"
-        ],
+        "features": "5 Seat, Virtual Cockpit, Leather Seats, Parking Sensors, Climate Control",
         "description": "Executive sedan combining innovation and elegance.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:03:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "Audi Q7 2024",
@@ -88,16 +76,13 @@
         "category": "SUV",
         "registrationNumber": "DHK-8005",
         "dailyRentalPrice": 155,
-        "features": [
-            "7 Seat",
-            "Quattro AWD",
-            "Premium Audio",
-            "Touchscreen",
-            "Blind Spot Monitor"
-        ],
+        "features": "7 Seat, Quattro AWD, Premium Audio, Touchscreen, Blind Spot Monitor",
         "description": "Spacious premium SUV suitable for families.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:04:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "Audi RS5 2023",
@@ -108,16 +93,13 @@
         "category": "SPORTS",
         "registrationNumber": "DHK-8006",
         "dailyRentalPrice": 180,
-        "features": [
-            "Sport Mode",
-            "Turbo Engine",
-            "Premium Interior",
-            "Launch Control",
-            "Sport Exhaust"
-        ],
+        "features": "Sport Mode, Turbo Engine, Premium Interior, Launch Control, Sport Exhaust",
         "description": "High-performance coupe built for speed enthusiasts.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:05:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "Bugatti Chiron",
@@ -128,16 +110,13 @@
         "category": "SPORTS",
         "registrationNumber": "DHK-8007",
         "dailyRentalPrice": 2000,
-        "features": [
-            "W16 Engine",
-            "Carbon Fiber Body",
-            "Luxury Interior",
-            "Track Mode",
-            "Premium Sound"
-        ],
+        "features": "W16 Engine, Carbon Fiber Body, Luxury Interior, Track Mode, Premium Sound",
         "description": "Ultra-exclusive hypercar delivering extreme performance.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:06:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "Ferrari F8 Tributo",
@@ -148,16 +127,13 @@
         "category": "SPORTS",
         "registrationNumber": "DHK-8008",
         "dailyRentalPrice": 900,
-        "features": [
-            "Twin Turbo V8",
-            "Sport Exhaust",
-            "Carbon Fiber",
-            "Track Mode",
-            "Luxury Cabin"
-        ],
+        "features": "Twin Turbo V8, Sport Exhaust, Carbon Fiber, Track Mode, Luxury Cabin",
         "description": "Italian supercar with breathtaking acceleration.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:07:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "Ford Explorer 2024",
@@ -168,16 +144,13 @@
         "category": "SUV",
         "registrationNumber": "DHK-8009",
         "dailyRentalPrice": 110,
-        "features": [
-            "7 Seat",
-            "Touchscreen",
-            "Rear Camera",
-            "Cruise Control",
-            "AWD"
-        ],
+        "features": "7 Seat, Touchscreen, Rear Camera, Cruise Control, AWD",
         "description": "Reliable and spacious SUV for long trips.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:08:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "Ford Mustang GT",
@@ -188,16 +161,13 @@
         "category": "SPORTS",
         "registrationNumber": "DHK-8010",
         "dailyRentalPrice": 150,
-        "features": [
-            "V8 Engine",
-            "Sport Mode",
-            "Premium Audio",
-            "Rear Camera",
-            "Launch Control"
-        ],
+        "features": "V8 Engine, Sport Mode, Premium Audio, Rear Camera, Launch Control",
         "description": "Iconic American muscle car.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:09:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "Mercedes S-Class 2024",
@@ -208,16 +178,13 @@
         "category": "PRIMIUM",
         "registrationNumber": "DHK-8011",
         "dailyRentalPrice": 220,
-        "features": [
-            "Luxury Interior",
-            "Massage Seats",
-            "Ambient Lighting",
-            "Digital Cockpit",
-            "Safety Assist"
-        ],
+        "features": "Luxury Interior, Massage Seats, Ambient Lighting, Digital Cockpit, Safety Assist",
         "description": "Flagship luxury sedan with cutting-edge technology.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:10:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "Mercedes GLE 2024",
@@ -228,16 +195,13 @@
         "category": "SUV",
         "registrationNumber": "DHK-8012",
         "dailyRentalPrice": 170,
-        "features": [
-            "AWD",
-            "Panoramic Roof",
-            "Premium Sound",
-            "Digital Display",
-            "Advanced Safety"
-        ],
+        "features": "AWD, Panoramic Roof, Premium Sound, Digital Display, Advanced Safety",
         "description": "Luxury SUV delivering comfort and power.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:11:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "Tesla Model 3",
@@ -248,16 +212,13 @@
         "category": "ELECTRIC",
         "registrationNumber": "DHK-8013",
         "dailyRentalPrice": 130,
-        "features": [
-            "Electric",
-            "Autopilot",
-            "Touchscreen",
-            "Fast Charging",
-            "Glass Roof"
-        ],
+        "features": "Electric, Autopilot, Touchscreen, Fast Charging, Glass Roof",
         "description": "Electric sedan with instant torque.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:12:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "Tesla Model X",
@@ -268,16 +229,13 @@
         "category": "ELECTRIC",
         "registrationNumber": "DHK-8014",
         "dailyRentalPrice": 190,
-        "features": [
-            "Electric SUV",
-            "Falcon Doors",
-            "Autopilot",
-            "Large Display",
-            "AWD"
-        ],
+        "features": "Electric SUV, Falcon Doors, Autopilot, Large Display, AWD",
         "description": "High-tech electric SUV with premium features.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:13:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     },
     {
         "name": "Rolls-Royce Phantom",
@@ -288,15 +246,12 @@
         "category": "PRIMIUM",
         "registrationNumber": "DHK-8015",
         "dailyRentalPrice": 600,
-        "features": [
-            "Ultra Luxury",
-            "Starlight Headliner",
-            "Premium Leather",
-            "Rear Entertainment",
-            "Advanced Suspension"
-        ],
+        "features": "Ultra Luxury, Starlight Headliner, Premium Leather, Rear Entertainment, Advanced Suspension",
         "description": "Ultimate expression of automotive luxury.",
-        "isAvailable": true,
-        "createdAt": "2026-02-23T20:14:00.000Z"
+        "email": "customer@gmail.com",
+        "bookingCount": 0,
+        "bookingStatus": false,
+        "availability": true,
+        "createdAt": "2026-03-01T12:00:00.000Z"
     }
 ]
