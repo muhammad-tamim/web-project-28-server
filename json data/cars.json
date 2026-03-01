@@ -14,7 +14,7 @@
         "bookingCount": 0,
         "bookingStatus": false,
         "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "BMW X5 2024",
@@ -30,8 +30,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "BMW i4 2024",
@@ -47,8 +46,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Audi A6 2024",
@@ -64,8 +62,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Audi Q7 2024",
@@ -81,8 +78,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Audi RS5 2023",
@@ -98,8 +94,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Bugatti Chiron",
@@ -115,8 +110,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Ferrari F8 Tributo",
@@ -132,8 +126,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Ford Explorer 2024",
@@ -149,8 +142,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Ford Mustang GT",
@@ -166,8 +158,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Mercedes S-Class 2024",
@@ -183,8 +174,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Mercedes GLE 2024",
@@ -200,8 +190,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Tesla Model 3",
@@ -217,8 +206,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Tesla Model X",
@@ -234,8 +222,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Rolls-Royce Phantom",
@@ -251,8 +238,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Toyota Corolla 2024",
@@ -268,8 +254,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Toyota Camry 2024",
@@ -285,8 +270,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Toyota RAV4 2024",
@@ -302,8 +286,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Toyota Land Cruiser 2024",
@@ -319,8 +302,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
-        "availability": true,
-        "createdAt": "2026-03-01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "Rolls-Royce Ghost",
@@ -337,6 +319,6 @@
         "bookingCount": 0,
         "bookingStatus": false,
         "availability": true,
-        "createdAt": "2026‑03‑01T12:00:00.000Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00"
     }
 ]

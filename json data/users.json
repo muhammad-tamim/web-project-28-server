@@ -5,8 +5,8 @@
         "photoUrl": "https://i.ibb.co.com/zV0mRkGC/customer.png",
         "role": "customer",
         "wantToSellerRequest": false,
-        "createdAt": "2026-03-01T09:15:23.123Z",
-        "lastLogin": "2026-03-01T09:15:23.123Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00",
+        "lastLogin": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "seller",
@@ -14,8 +14,8 @@
         "photoUrl": "https://i.ibb.co.com/F4jwGvy4/seller.png",
         "role": "customer",
         "wantToSellerRequest": true,
-        "createdAt": "2026-03-01T09:15:23.123Z",
-        "lastLogin": "2026-03-01T09:15:23.123Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00",
+        "lastLogin": "2026-03-01T15:17:16.277+00:00"
     },
     {
         "name": "admin",
@@ -23,7 +23,7 @@
         "photoUrl": "https://i.ibb.co.com/ksJHp0dX/protection.png",
         "role": "admin",
         "wantToSellerRequest": false,
-        "createdAt": "2026-03-01T09:15:23.123Z",
-        "lastLogin": "2026-03-01T09:15:23.123Z"
+        "createdAt": "2026-03-01T15:17:16.277+00:00",
+        "lastLogin": "2026-03-01T15:17:16.277+00:00"
     }
 ]
