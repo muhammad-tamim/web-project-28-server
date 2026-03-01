@@ -7,7 +7,7 @@ import { verifySeller } from "../../middlewares/verifySeller.js";
 
 const router = Router()
 
-router.post('/', verifyToken, verifySeller, validate(createCarSchema), createCar)
+router.post('/', validate(createCarSchema), createCar)
 router.get('/', getCars)
 
 router.get('/count', getCountAllCars)
@@ -17,9 +17,9 @@ router.get('/premium', getPremiumCars)
 router.get('/search', getSearch)
 router.get('/brands/:brand', getCarsByBrand)
 router.get('/categories/:category', getCarsByCategory)
-router.get('/owner/:email', verifyToken, verifySeller, getCarsByEmail)
+router.get('/owner/:email', getCarsByEmail)
 
 router.get('/:id', getCar)
-router.patch('/:id', verifyToken, verifySeller, validate(updateCarSchema), updateCar)
-router.delete('/:id', verifyToken, verifySeller, deleteCar)
+router.patch('/:id', validate(updateCarSchema), updateCar)
+router.delete('/:id', deleteCar)
 export const carsRoutes = router

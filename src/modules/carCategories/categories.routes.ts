@@ -7,12 +7,12 @@ import { verifyAdmin } from "../../middlewares/verifyAdmin.js";
 
 const router = Router()
 
-router.post('/', verifyToken, verifyAdmin, validate(createCategorySchema), createCategory)
+router.post('/', validate(createCategorySchema), createCategory)
 router.get('/', getCategories)
 
-router.get('/count', verifyToken, countAllCategory)
+router.get('/count', countAllCategory)
 
-router.patch('/:id', verifyToken, verifyAdmin, validate(updateCategorySchema), updateCategory)
-router.delete('/:id', verifyToken, verifyAdmin, deleteCategory)
+router.patch('/:id', validate(updateCategorySchema), updateCategory)
+router.delete('/:id', deleteCategory)
 
 export const categoriesRoutes = router
