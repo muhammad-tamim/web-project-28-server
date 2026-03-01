@@ -8,7 +8,7 @@ import { verifyAdmin } from "../../middlewares/verifyAdmin.js";
 const router = Router()
 
 router.post('/', verifyToken, verifyAdmin, validate(createCategorySchema), createCategory)
-router.get('/', verifyToken, getCategories)
+router.get('/', getCategories)
 
 router.get('/count', verifyToken, countAllCategory)
 

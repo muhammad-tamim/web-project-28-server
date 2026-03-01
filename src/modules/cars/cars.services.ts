@@ -16,7 +16,7 @@ export const carsService = {
     },
 
     findPremium() {
-        const filter = { category: "PRIMIUM" }
+        const filter = { category: "PREMIUM" }
         return carsCollection.find(filter).toArray()
     },
 
