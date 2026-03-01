@@ -37,6 +37,20 @@ export const getCars = async (req: Request, res: Response) => {
     }
 }
 
+export const getPremiumCars = async (req: Request, res: Response) => {
+    try {
+        const cars = await carsService.findPremium()
+        res.status(200).send({
+            success: true,
+            message: "Premium cars retrieved successfully",
+            result: cars,
+        })
+    }
+    catch (err: any) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
 export const getCarsByBrand = async (req: Request, res: Response) => {
     const brand = req.params.brand
     const page = Number(req.query.page)
