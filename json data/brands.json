@@ -1,0 +1,52 @@
+[
+    {
+        "name": "BMW",
+        "photoUrl": "https://i.ibb.co.com/s9NPhq3g/bmw.webp",
+        "isActive": true
+    },
+    {
+        "name": "TOYOTA",
+        "photoUrl": "https://i.ibb.co.com/Vpq5JVFW/toyota.webp",
+        "isActive": true
+    },
+    {
+        "name": "AUDI",
+        "photoUrl": "https://i.ibb.co.com/Wv6xb0Sb/audi-logo-2016-640.png",
+        "isActive": true
+    },
+    {
+        "name": "BUGATTI",
+        "photoUrl": "https://i.ibb.co.com/23y351DG/Bugatti-logo-640x327.jpg",
+        "isActive": true
+    },
+    {
+        "name": "FARRARI",
+        "photoUrl": "https://i.ibb.co.com/TDM5xrkz/ferrari-logo-2002-640.png",
+        "isActive": true
+    },
+    {
+        "name": "FORD",
+        "photoUrl": "https://i.ibb.co.com/MkQLZKHn/ford-logo.png",
+        "isActive": true
+    },
+    {
+        "name": "MERCEDES",
+        "photoUrl": "https://i.ibb.co.com/m548Ckp3/mercedes.jpg",
+        "isActive": true
+    },
+    {
+        "name": "TESLA",
+        "photoUrl": "https://i.ibb.co.com/9mzvqsM0/tesla-logo.png",
+        "isActive": true
+    },
+    {
+        "name": "ROOLS-ROYCE",
+        "photoUrl": "https://i.ibb.co.com/20SsCdmV/Rolls-Royce-logo-640x550.jpg",
+        "isActive": true
+    },
+    {
+        "name": "T",
+        "photoUrl": "https://i.ibb.co.com/20SsCdmV/Rolls-Royce-logo-640x550.jpg",
+        "isActive": true
+    }
+]

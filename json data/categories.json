@@ -1,0 +1,27 @@
+[
+    {
+        "name": "SUV",
+        "photoUrl": "https://i.ibb.co.com/sJQNbjJC/SUV.avif",
+        "isActive": true
+    },
+    {
+        "name": "SPORTS",
+        "photoUrl": "https://i.ibb.co.com/cc0Xcxfp/sports.avif",
+        "isActive": true
+    },
+    {
+        "name": "SEDAN",
+        "photoUrl": "https://i.ibb.co.com/BVTyQDMR/SEDAN.avif",
+        "isActive": true
+    },
+    {
+        "name": "PREMIUM",
+        "photoUrl": "https://i.ibb.co.com/Nn3tKhBm/primium.jpg",
+        "isActive": true
+    },
+    {
+        "name": "ELECTRIC",
+        "photoUrl": "https://i.ibb.co.com/YBdB0D9Q/electric.jpg",
+        "isActive": true
+    }
+]
