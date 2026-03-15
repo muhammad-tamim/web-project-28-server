@@ -4,22 +4,23 @@ import { createUserSchema } from "./users.validations.js";
 import { createUser, getCountAll, getCountAllAdmin, getCountAllCustomer, getCountAllSeller, getRecentCustomers, getRecentSellers, getUserByEmail, getUsers, updateUser } from "./users.controllers.js";
 import { verifyToken } from "../../middlewares/verifyToken.js";
 import { verifyAdmin } from "../../middlewares/verifyAdmin.js";
+import { authorizeEmail } from "../../middlewares/authorizeEmail.js";
 
 const router = Router()
 
 router.post('/', validate(createUserSchema), createUser)
-router.get('/', getUsers)
+router.get('/', verifyToken, verifyAdmin, getUsers)
 
-router.get("/count", getCountAll)
-router.get("/count/customer", getCountAllCustomer)
-router.get("/count/seller", getCountAllSeller)
-router.get("/count/admin", getCountAllAdmin)
+router.get("/count", verifyToken, getCountAll)
+router.get("/count/customer", verifyToken, getCountAllCustomer)
+router.get("/count/seller", verifyToken, getCountAllSeller)
+router.get("/count/admin", verifyToken, getCountAllAdmin)
 
-router.get('/recent-customers', getRecentCustomers)
-router.get('/recent-sellers', getRecentSellers)
+router.get('/recent-customers', verifyToken, getRecentCustomers)
+router.get('/recent-sellers', verifyToken, getRecentSellers)
 
-router.get('/:email', getUserByEmail)
+router.get('/:email', verifyToken, authorizeEmail, getUserByEmail)
 
-router.patch('/update/:id', updateUser)
+router.patch('/update/:id', verifyToken, verifyAdmin, updateUser)
 
 export const usersRoutes = router

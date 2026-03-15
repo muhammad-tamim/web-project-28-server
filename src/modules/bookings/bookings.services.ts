@@ -7,7 +7,7 @@ import ExcelJS from "exceljs";
 import { format } from "date-fns";
 import { transporter } from "../../utils/nodemailer.js";
 
-const bookingsCollection = client.db("web-project-28-DB").collection("bookings");
+export const bookingsCollection = client.db("web-project-28-DB").collection("bookings");
 
 export const bookingsService = {
 

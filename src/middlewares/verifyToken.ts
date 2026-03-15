@@ -1,24 +1,28 @@
-import { Request, Response, NextFunction } from 'express'
-import admin from '../lib/firebase.js'
+import { Request, Response, NextFunction } from "express"
+import admin from "../lib/firebase.js"
 
-interface AuthRequest extends Request {
-    decoded?: admin.auth.DecodedIdToken
+export interface AuthRequest extends Request {
+    user?: admin.auth.DecodedIdToken
 }
 
-export const verifyToken = async (req: AuthRequest, res: Response, next: NextFunction) => {
+export const verifyToken = async (
+    req: AuthRequest,
+    res: Response,
+    next: NextFunction
+) => {
     const authHeader = req.headers.authorization
 
-    if (!authHeader?.startsWith('Bearer ')) {
-        return res.status(401).json({ message: 'Not authenticated' })
+    if (!authHeader?.startsWith("Bearer ")) {
+        return res.status(401).json({ message: "Not authenticated" })
     }
 
-    const token = authHeader.split(' ')[1]
+    const token = authHeader.split(" ")[1]
 
     try {
         const decoded = await admin.auth().verifyIdToken(token as string)
-        req.decoded = decoded
+        req.user = decoded
         next()
     } catch {
-        return res.status(401).json({ message: 'Token expired or invalid' })
+        return res.status(401).json({ message: "Token expired or invalid" })
     }
 }

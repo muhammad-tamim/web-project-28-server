@@ -2,7 +2,7 @@ import { Response, NextFunction } from 'express'
 import { AuthRequest } from './verifyToken.js'
 
 export const authorizeEmail = (req: AuthRequest, res: Response, next: NextFunction) => {
-    const emailFromToken = req.decoded?.email
+    const emailFromToken = req.user?.email
 
     const emailFromRequest = req.params.email || req.query.email || req.body.email
 
