@@ -7,10 +7,10 @@ import { verifyAdmin } from "../../middlewares/verifyAdmin.js";
 
 const router = Router()
 
-router.post('/', validate(createBrandSchema), createBrand)
+router.post('/', verifyToken, verifyAdmin, validate(createBrandSchema), createBrand)
 router.get('/', getBrands)
 router.get('/count', countAllBrand)
-router.patch('/:id', validate(updateBrandSchema), updateBrand)
-router.delete('/:id', deleteBrand)
+router.patch('/:id', verifyToken, verifyAdmin, validate(updateBrandSchema), updateBrand)
+router.delete('/:id', verifyToken, verifyAdmin, deleteBrand)
 
 export const brandsRoutes = router
