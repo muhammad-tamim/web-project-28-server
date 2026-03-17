@@ -2,6 +2,22 @@
 
 A full-stack **car rental management platform**  that enables customers to rent vehicles online, sellers to manage their vehicles, and admin to control the entire marketplace.
 
+- [Explanation:](#explanation)
+- [Live Links:](#live-links)
+- [Repository Links:](#repository-links)
+- [Features:](#features)
+- [Tech Stack:](#tech-stack)
+- [Project Architecture:](#project-architecture)
+- [API Endpoints](#api-endpoints)
+- [Zod Validation Schema:](#zod-validation-schema)
+- [What I Learn:](#what-i-learn)
+- [Challenges I Faced:](#challenges-i-faced)
+- [Limitations:](#limitations)
+- [Environment Variables](#environment-variables)
+- [Installation \& Setup:](#installation--setup)
+- [Contact:](#contact)
+
+
 ## Explanation: 
 
 ## Live Links:
