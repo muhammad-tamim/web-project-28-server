@@ -30,6 +30,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -46,6 +47,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -62,6 +64,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -78,6 +81,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -94,6 +98,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -110,6 +115,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -126,6 +132,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -142,6 +149,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -158,6 +166,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -174,6 +183,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -190,6 +200,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -206,6 +217,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -222,6 +234,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -238,6 +251,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -254,6 +268,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -270,6 +285,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -286,6 +302,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
@@ -302,6 +319,7 @@
         "email": "seller@gmail.com",
         "bookingCount": 0,
         "bookingStatus": false,
+        "availability": true,
         "createdAt": "2026-03-01T15:17:16.277+00:00"
     },
     {
