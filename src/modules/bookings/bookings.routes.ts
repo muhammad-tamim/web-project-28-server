@@ -1,7 +1,7 @@
 // bookings.routes.ts
 import { Router } from "express";
 import { createBookingSchema } from "./bookings.validations.js";
-import { createBooking, deleteBooking, getAllBookings, getAllBookingsWithPagination, getBookings, getBookingsBySellerEmail, getReport } from "./bookings.controllers.js";
+import { createBooking, deleteBooking, getAllBookings, getAllBookingsWithPagination, getBookingByTranId, getBookings, getBookingsBySellerEmail, getReport } from "./bookings.controllers.js";
 import { validate } from "../../middlewares/validate.js";
 import { verifyToken } from "../../middlewares/verifyToken.js";
 import { authorizeEmail } from "../../middlewares/authorizeEmail.js";
@@ -15,6 +15,7 @@ router.get('/seller/pagination/:email', verifyToken, authorizeEmail, getBookings
 router.get('/seller/:email', verifyToken, authorizeEmail, getBookingsBySellerEmail)
 router.get('/', verifyToken, getAllBookings)
 
+router.get('/transaction/:tran_id', getBookingByTranId)
 router.get('/:email', verifyToken, authorizeEmail, getBookings)
 
 router.delete('/:id', verifyToken, deleteBooking)

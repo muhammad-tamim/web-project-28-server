@@ -66,7 +66,10 @@ export const bookingsService = {
             html: emailHtml,
         });
 
-        return result
+        return {
+            _id: result.insertedId,
+            ...bookingInfo,
+        };
     },
 
 
@@ -167,5 +170,9 @@ export const bookingsService = {
         });
 
         return workbook
+    },
+
+    async findBookingByTranId(tran_id: string) {
+        return bookingsCollection.findOne({ tran_id })
     }
 };

@@ -110,21 +110,21 @@ export const paymentsService = {
     async validate(tran_id: string, val_id: string) {
         const payment = await paymentsCollection.findOne({ tran_id });
 
-        if (!payment) {
-            throw new Error("Payment not found");
-        }
-        if (payment.val_id !== val_id) {
-            return false;
-        }
+        if (!payment) throw new Error("Payment not found");
 
-        const filter = { tran_id }
-        const updateDoc = {
-            $set: {
-                paymentStatus: "complete",
-                updatedAt: new Date(),
-            },
-        }
-        return await paymentsCollection.updateOne(filter, updateDoc as any);
+        if (payment.val_id !== val_id) return false;
+
+        await paymentsCollection.updateOne(
+            { tran_id },
+            {
+                $set: {
+                    paymentStatus: "complete",
+                    updatedAt: new Date(),
+                },
+            }
+        );
+
+        return true; // ✅ FIX
     },
 
     // 🔹 Get By Transaction ID

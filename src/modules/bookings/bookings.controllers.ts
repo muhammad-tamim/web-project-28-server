@@ -141,3 +141,16 @@ export const getReport = async (req: Request, res: Response) => {
         res.status(500).send({ message: err.message })
     }
 }
+
+export const getBookingByTranId = async (req: Request, res: Response) => {
+    try {
+        const booking = await bookingsService.findBookingByTranId(req.params.tran_id as string)
+
+        res.status(200).send({
+            success: true,
+            result: booking,
+        });
+    } catch (err: any) {
+        res.status(500).send({ message: err.message });
+    }
+};

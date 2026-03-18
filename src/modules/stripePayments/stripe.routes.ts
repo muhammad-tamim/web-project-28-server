@@ -1,20 +1,24 @@
+// src/modules/stripe/stripe.route.ts
+
 import { Router } from "express";
 import { validate } from "../../middlewares/validate.js";
-import { initPaymentSchema, validatePaymentSchema } from "./stripe.validation.js";
-import { handlePaymentCancel, handlePaymentSuccess, initializePayment, validatePayment } from "./stripe.controller.js";
+import {
+    initializePayment,
+    validatePayment,
+    handlePaymentCancel,
+} from "./stripe.controller.js";
+import {
+    initPaymentSchema,
+    validatePaymentSchema,
+} from "./stripe.validation.js";
 
 const router = Router();
 
-// Create Stripe session (POST)
 router.post("/init", validate(initPaymentSchema), initializePayment);
 
-// Stripe success callback (POST)
-router.post("/success", handlePaymentSuccess);
-
-// Stripe cancel/failure callback (POST)
-router.post("/cancel", handlePaymentCancel);
-
-// Validate payment (POST)
+// 🔥 frontend will call this after redirect
 router.post("/validate", validate(validatePaymentSchema), validatePayment);
+
+router.post("/cancel", handlePaymentCancel);
 
 export const stripeRoutes = router;
