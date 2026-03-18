@@ -5,7 +5,7 @@ import { bookingsService } from "./bookings.services.js"
 
 export const createBooking = async (req: Request, res: Response) => {
     try {
-        const result = await bookingsService.create(req.body.tran_id)
+        const result = await bookingsService.create(req.body)
         res.status(200).send({
             success: true,
             message: "Bookings created successfully",

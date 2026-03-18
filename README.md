@@ -31,16 +31,12 @@ A full-stack **car rental management platform**  that enables customers to rent 
 ## Features:
 - Authorization using firebase
 - Car, User, Bookings, categories, brands Management
-- Payment Integration (Stripe and SSLCommerz)
 
 ## Tech Stack:
 **Core Technologies:** 
 - Node, Express, TypeScript, MongoDB, Zod
 **Libraries & Packages:** 
 - cors, dotenv, exceljs, nodemailer, date-fns, firebase-admin
-**Payments:** 
-- Stripe (For International Payment)
-- SSLCommerz (For Bangladesh Payment)
 
 ## Project Architecture:
 This project follows modular architecture where each independent feature have their routes, controllers and services.
@@ -128,21 +124,6 @@ PATCH  /categories/:id   -> Update category (Admin only)
 DELETE /categories/:id   -> Delete category (Admin only)
 ```
 
-**Stripe Payment:**
-```
-POST   /stripe/init      -> Initialize Stripe checkout session
-POST   /stripe/success   -> Handle successful payment
-POST   /stripe/cancel    -> Handle cancelled payment
-POST   /stripe/validate  -> Validate Stripe payment
-```
-**SSLCommerz Payment:**
-```
-POST   /sslcommerz/init      -> Initialize payment
-POST   /sslcommerz/success   -> Handle successful payment
-POST   /sslcommerz/failure   -> Handle failed payment
-POST   /sslcommerz/validate  -> Validate SSLCommerz payment
-```
-
 ## Zod Validation Schema:
 
 **Car:**
@@ -223,60 +204,6 @@ export const updateUserSchema =
     .partial()
 ```
 
-**SSLCommerz Payment:**
-```
-import { z } from 'zod'
-
-export const initPaymentSchema = z.object({
-  carId: z.string().min(1),
-
-  product_name: z.string().min(2),
-
-  cus_name: z.string().min(2),
-  cus_email: z.email(),
-  cus_add1: z.string().min(3),
-  cus_city: z.string().min(2),
-  cus_postcode: z.string().min(3),
-  cus_country: z.string().min(2),
-  cus_phone: z.string().min(6),
-
-  startDate: z.string(),
-  endDate: z.string()
-})
-
-export const validatePaymentSchema = z.object({
-  tran_id: z.string().min(1),
-  val_id: z.string().min(1)
-})
-```
-
-**Stripe Payment:**
-```
-import { z } from 'zod'
-
-export const initPaymentSchema = z.object({
-  carId: z.string().min(1),
-
-  product_name: z.string().min(2),
-
-  cus_name: z.string().min(2),
-  cus_email: z.email(),
-  cus_add1: z.string().min(3),
-  cus_city: z.string().min(2),
-  cus_postcode: z.string().min(3),
-  cus_country: z.string().min(2),
-  cus_phone: z.string().min(6),
-
-  startDate: z.string(),
-  endDate: z.string()
-})
-
-export const validatePaymentSchema = z.object({
-  tran_id: z.string().min(1),
-  val_id: z.string().min(1)
-})
-```
-
 **Booking:** 
 ```
 import { z } from 'zod'
@@ -300,6 +227,7 @@ export const createBookingSchema = z.object({
 - Maintaining clean modular architecture
 
 ## Limitations:
+- No Real Payment System
 - No Refund system
 - Booking cancellation does not enforce time restrictions
 - No Notification system

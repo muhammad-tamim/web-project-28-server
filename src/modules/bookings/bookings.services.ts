@@ -11,65 +11,75 @@ export const bookingsCollection = client.db("web-project-28-DB").collection("boo
 
 export const bookingsService = {
 
-    async create(tran_id: string) {
-        // 1️⃣ Find the payment
-        const payment = await paymentsCollection.findOne({ tran_id });
-        if (!payment) throw new Error("Payment not found");
-        if (payment.paymentStatus !== "complete") throw new Error("Payment not completed");
+    async create(payload: any) {
 
-        // 2️⃣ Check if a booking already exists for this transaction
+        const { tran_id, carId, cus_name, cus_email, total_amount, startDate, endDate, currency, cus_photoUrl } = payload;
+
+
+        // 1️⃣ Check if a booking already exists for this transaction
         const existingBooking = await bookingsCollection.findOne({ tran_id });
-        if (existingBooking) {
-            return existingBooking; // Return existing booking instead of creating a duplicate
-        }
+        if (existingBooking) return existingBooking;
 
-        const car = await carsCollection.findOne({ _id: new ObjectId(payment.carId) });
+        // 2️⃣ Get the car
+        const car = await carsCollection.findOne({ _id: new ObjectId(carId) });
         if (!car) throw new Error("Car not found");
 
+        // 3️⃣ Prepare booking info
         const bookingInfo = {
             tran_id,
-            carId: payment.carId,
-            email: payment.cus_email,
-            startDate: payment.startDate,
-            endDate: payment.endDate,
-            totalCost: payment.total_amount,
+            carId,
+            email: cus_email,
+            startDate,
+            endDate,
+            totalCost: total_amount,
             car,
-            payment,
+            payment: {
+                tran_id,
+                paymentStatus: 'complete', // since frontend demo
+                total_amount,
+                currency,
+                cus_name,
+                cus_email,
+                cus_photoUrl,
+                createdAt: new Date()
+            },
             createdAt: new Date(),
         };
 
-        // 5️⃣ Insert the booking
+        // 4️⃣ Insert booking
         const result = await bookingsCollection.insertOne(bookingInfo as any);
 
-        // 6️⃣ Update car stats
-        const updateResult = await carsCollection.updateOne(
-            { _id: new ObjectId(payment.carId) },
+
+        // 5️⃣ Update car stats
+        await carsCollection.updateOne(
+            { _id: new ObjectId(carId) },
             {
                 $set: { availability: false, bookingStatus: true },
                 $inc: { bookingCount: 1 }
-            })
+            }
+        );
 
-        // 7️⃣ Send simple email notification
+
+        // 6️⃣ Send email notification
         const emailHtml = `
-    <h2>Booking Confirmed!</h2>
-    <p>Hi ${payment.cus_name},</p>
-    <p>Your payment of <b>${payment.total_amount} ${payment.currency}</b> was successful.</p>
-    <p>Your booking for <b>${car.name}</b> from <b>${payment.startDate}</b> to <b>${payment.endDate}</b> has been created.</p>
-    <p>Invoice ID: <b>${tran_id}</b></p>
-    <p>Thank you for choosing our service!</p>
-  `;
+            <h2>Booking Confirmed!</h2>
+            <p>Hi ${cus_name},</p>
+            <p>Your payment of <b>${total_amount} ${currency}</b> was successful.</p>
+            <p>Your booking for <b>${car.name}</b> from <b>${startDate}</b> to <b>${endDate}</b> has been created.</p>
+            <p>Invoice ID: <b>${tran_id}</b></p>
+            <p>Thank you for choosing our service!</p>
+        `;
+
 
         await transporter.sendMail({
             from: `"REXTAX" ${process.env.GOOGLE_APP_USER}`,
-            to: payment.cus_email,
+            to: cus_email,
             subject: `Booking Confirmed - ${tran_id}`,
             html: emailHtml,
         });
 
-        return {
-            _id: result.insertedId,
-            ...bookingInfo,
-        };
+
+        return { _id: result.insertedId, ...bookingInfo };
     },
 
 
