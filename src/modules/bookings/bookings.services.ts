@@ -12,19 +12,23 @@ export const bookingsCollection = client.db("web-project-28-DB").collection("boo
 export const bookingsService = {
 
     async create(payload: any) {
+        const {
+            tran_id,
+            carId,
+            cus_name,
+            cus_email,
+            total_amount,
+            startDate,
+            endDate,
+            currency,
+            cus_photoUrl
+        } = payload;
 
-        const { tran_id, carId, cus_name, cus_email, total_amount, startDate, endDate, currency, cus_photoUrl } = payload;
-
-
-        // 1️⃣ Check if a booking already exists for this transaction
-        const existingBooking = await bookingsCollection.findOne({ tran_id });
-        if (existingBooking) return existingBooking;
-
-        // 2️⃣ Get the car
+        // 1️⃣ Get car
         const car = await carsCollection.findOne({ _id: new ObjectId(carId) });
         if (!car) throw new Error("Car not found");
 
-        // 3️⃣ Prepare booking info
+        // 2️⃣ Prepare booking
         const bookingInfo = {
             tran_id,
             carId,
@@ -32,10 +36,10 @@ export const bookingsService = {
             startDate,
             endDate,
             totalCost: total_amount,
-            car,
+            car, // optional: snapshot (ok for now)
             payment: {
                 tran_id,
-                paymentStatus: 'complete', // since frontend demo
+                paymentStatus: 'complete',
                 total_amount,
                 currency,
                 cus_name,
@@ -46,40 +50,62 @@ export const bookingsService = {
             createdAt: new Date(),
         };
 
-        // 4️⃣ Insert booking
-        const result = await bookingsCollection.insertOne(bookingInfo as any);
+        let booking: any;
+        let isNewInsert = false;
 
+        // 3️⃣ Insert safely (handle duplicates)
+        try {
+            const result = await bookingsCollection.insertOne(bookingInfo as any);
+            booking = { _id: result.insertedId, ...bookingInfo };
+            isNewInsert = true;
 
-        // 5️⃣ Update car stats
-        await carsCollection.updateOne(
-            { _id: new ObjectId(carId) },
-            {
-                $set: { availability: false, bookingStatus: true },
-                $inc: { bookingCount: 1 }
+        } catch (error: any) {
+
+            // 🔥 Duplicate transaction (idempotent handling)
+            if (error.code === 11000) {
+                booking = await bookingsCollection.findOne({ tran_id });
+
+                if (!booking) {
+                    throw new Error("Duplicate detected but booking not found");
+                }
+
+                return booking; // already exists → return it
             }
-        );
 
+            throw error; // real error
+        }
 
-        // 6️⃣ Send email notification
+        // 4️⃣ Update car ONLY if new booking
+        if (isNewInsert) {
+            await carsCollection.updateOne(
+                { _id: new ObjectId(carId) },
+                {
+                    $set: { availability: false, bookingStatus: true },
+                    $inc: { bookingCount: 1 }
+                }
+            );
+        }
+
+        // 5️⃣ Send email (non-blocking safe)
         const emailHtml = `
-            <h2>Booking Confirmed!</h2>
-            <p>Hi ${cus_name},</p>
-            <p>Your payment of <b>${total_amount} ${currency}</b> was successful.</p>
-            <p>Your booking for <b>${car.name}</b> from <b>${startDate}</b> to <b>${endDate}</b> has been created.</p>
-            <p>Invoice ID: <b>${tran_id}</b></p>
-            <p>Thank you for choosing our service!</p>
-        `;
+        <h2>Booking Confirmed!</h2>
+        <p>Hi ${cus_name},</p>
+        <p>Your payment of <b>${total_amount} ${currency}</b> was successful.</p>
+        <p>Your booking for <b>${car.name}</b> from <b>${startDate}</b> to <b>${endDate}</b> has been created.</p>
+        <p>Invoice ID: <b>${tran_id}</b></p>
+        <p>Thank you for choosing our service!</p>
+    `;
 
-
-        await transporter.sendMail({
+        transporter.sendMail({
             from: `"REXTAX" ${process.env.GOOGLE_APP_USER}`,
             to: cus_email,
             subject: `Booking Confirmed - ${tran_id}`,
             html: emailHtml,
+        }).catch((err) => {
+            console.error("Email failed:", err.message);
         });
 
-
-        return { _id: result.insertedId, ...bookingInfo };
+        return booking;
     },
 
 
